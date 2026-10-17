@@ -10,7 +10,11 @@ export function config(env: NodeJS.ProcessEnv = process.env) {
       throw new Error(`${key} must remain false in fixture mode`);
   }
   for (const key of Object.keys(env)) {
-    if (/PROD|SUPABASE|SERVICE_ROLE/i.test(key) && env[key])
+    if (
+      key !== 'PRODUCTION_EXPORT_ENABLED' &&
+      /PROD|SUPABASE|SERVICE_ROLE/i.test(key) &&
+      env[key]
+    )
       throw new Error(`Forbidden production binding: ${key}`);
   }
   if (env.NODE_ENV === 'production')

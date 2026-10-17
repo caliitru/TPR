@@ -20,6 +20,9 @@ importers:
       fastify:
         specifier: ^5.6.1
         version: 5.12.7
+      ipaddr.js:
+        specifier: ^2.5.0
+        version: 2.5.0
       pg:
         specifier: ^8.16.3
         version: 8.23.1

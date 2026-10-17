@@ -1,3 +1,18 @@
+import { readFile } from 'node:fs/promises';
+import {
+  registerSource,
+  approveSourcePolicy,
+  enableMockSource,
+  suspendSource,
+  sourceHealth,
+} from '../../packages/core/sources.js';
+import { collectSource } from '../../packages/core/collection.js';
+import { mockTransportFor } from '../../packages/connectors/mock-scenarios.js';
+import {
+  purgeExpiredMetadata,
+  correctProductMatch,
+} from '../../packages/core/operations.js';
+import type { RegistrySource } from '../../packages/contracts/sources.js';
 import { parseArgs } from 'node:util';
 import { randomUUID } from 'node:crypto';
 import { z } from 'zod';
@@ -28,6 +43,8 @@ const { values, positionals } = parseArgs({
     type: { type: 'string' },
     'authorize-local-export': { type: 'boolean' },
     out: { type: 'string' },
+    file: { type: 'string' },
+    force: { type: 'boolean' },
   },
 });
 const db = database();
@@ -115,6 +132,68 @@ try {
       break;
     case 'retractions':
       result = await retractions(db);
+      break;
+
+    case 'sources':
+      result = await sourceHealth(db);
+      break;
+    case 'source-add':
+    case 'source-update':
+      if (!values.file) throw new Error('--file source.json is required');
+      result = await registerSource(
+        db,
+        JSON.parse(await readFile(values.file, 'utf8')),
+        actor,
+        positionals[0] === 'source-update',
+      );
+      break;
+    case 'source-policy':
+      if (!values.file || !values.source)
+        throw new Error('--source and --file policy.json required');
+      result = await approveSourcePolicy(
+        db,
+        values.source,
+        JSON.parse(await readFile(values.file, 'utf8')),
+        actor,
+      );
+      break;
+    case 'source-enable-mock':
+      result = await enableMockSource(
+        db,
+        z.string().parse(values.source),
+        actor,
+      );
+      break;
+    case 'source-suspend':
+      result = await suspendSource(db, z.string().parse(values.source), actor);
+      break;
+    case 'collect-mock': {
+      const id = z.string().parse(values.source);
+      const source = (
+        await db.pool.query<{ type: RegistrySource['type'] }>(
+          'SELECT type FROM sources WHERE source_id=$1',
+          [id],
+        )
+      ).rows[0];
+      if (!source) throw new Error('Source not found');
+      result = await collectSource(db, id, values.key ?? randomUUID(), {
+        actor,
+        transport: mockTransportFor(source.type),
+        force: values.force === true,
+      });
+      break;
+    }
+    case 'purge':
+      result = await purgeExpiredMetadata(db, actor);
+      break;
+    case 'correct-match':
+      if (!values.file) throw new Error('--file correction.json required');
+      result = await correctProductMatch(
+        db,
+        z.uuid().parse(values.id),
+        JSON.parse(await readFile(values.file, 'utf8')),
+        actor,
+      );
       break;
     default:
       throw new Error(

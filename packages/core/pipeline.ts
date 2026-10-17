@@ -1,3 +1,4 @@
+import { isDeepStrictEqual } from 'node:util';
 import { randomUUID } from 'node:crypto';
 import type pg from 'pg';
 import { transaction, type Database } from '../db/client.js';
@@ -69,7 +70,7 @@ export async function processNext(
   const job = await transaction(db, async (c) => {
     const row = (
       await c.query<Job>(
-        `SELECT * FROM crawl_jobs WHERE ((state IN ('queued','retry') AND next_retry_at<=now()) OR (state='running' AND lease_until<now())) AND attempts<3 ORDER BY queued_at,job_id FOR UPDATE SKIP LOCKED LIMIT 1`,
+        `SELECT * FROM crawl_jobs WHERE ((state IN ('queued','retry') AND next_retry_at<=now()) OR (state='running' AND lease_until<now())) AND attempts<3 AND source_id IN (SELECT source_id FROM sources WHERE type LIKE 'fixture-%') ORDER BY queued_at,job_id FOR UPDATE SKIP LOCKED LIMIT 1`,
       )
     ).rows[0];
     if (!row) return null;
@@ -144,7 +145,50 @@ export async function processNext(
             'UPDATE source_items SET last_seen_at=now() WHERE item_id=$1',
             [existing.item_id],
           );
-          if (existing.content_hash !== obs.source_content_hash) {
+          let contentChanged =
+            existing.content_hash !== obs.source_content_hash;
+          // Phase 0/1 stored a body-only hash. Upgrade it lazily only when all retained structured evidence agrees.
+          if (
+            contentChanged &&
+            existing.content_hash === hash(normalize(item.text))
+          ) {
+            const originals = (
+              await c.query<{
+                payload: Observation;
+                export_fields: {
+                  would_recommend: boolean | null;
+                  worth_the_price: boolean | null;
+                };
+              }>(
+                'SELECT payload,export_fields FROM observations WHERE item_id=$1',
+                [existing.item_id],
+              )
+            ).rows;
+            const fields = [
+              'observation_kind',
+              'sentiment',
+              'topic',
+              'explicit_rating',
+              'player_type',
+              'independence_group_key',
+            ] as const;
+            const agrees = originals.every(
+              (old) =>
+                fields.every((key) =>
+                  isDeepStrictEqual(old.payload[key], obs[key]),
+                ) &&
+                old.export_fields.would_recommend === item.would_recommend &&
+                old.export_fields.worth_the_price === item.worth_the_price,
+            );
+            if (agrees) {
+              await c.query(
+                'UPDATE source_items SET content_hash=$2 WHERE item_id=$1',
+                [existing.item_id, obs.source_content_hash],
+              );
+              contentChanged = false;
+            }
+          }
+          if (contentChanged) {
             await event(c, job.job_id, 'changed_content_requires_review');
             const affected = (
               await c.query<{

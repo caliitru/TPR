@@ -60,7 +60,13 @@ export function extract(
     first_hand_confidence: firsthand && !item.sponsored ? 1 : 0,
     model_version: 'fixture-rule-v1',
     prompt_version: null,
-    source_content_hash: hash(normalize(item.text)),
+    source_content_hash: hash(
+      JSON.stringify({
+        ...item,
+        text: normalize(item.text),
+        url: canonicalUrl(item.url),
+      }),
+    ),
     independence_group_key: group,
     rights_policy_id: policy,
     quality_flags: flags,

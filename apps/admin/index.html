@@ -9,9 +9,45 @@
     <main>
       <h1>Player Consensus — Private Fixture Review</h1>
       <p>
+        Phase 2 source operations: mock HTTP only. All real connectors and
+        publication remain disabled.
+      </p>
+      <p>
         Synthetic observations only. Approval permits analysis, never production
         publication. No source bodies are retained.
       </p>
+
+      <section aria-labelledby="source-heading">
+        <h2 id="source-heading">Source management and health</h2>
+        <p>
+          Register a disabled source, approve a mock-only permission policy,
+          then explicitly authorize mock collection. These actions grant no
+          live-source permission.
+        </p>
+        <label
+          >Source configuration JSON
+          <textarea id="source-json" rows="12" cols="80"></textarea>
+        </label>
+        <button id="source-register">Register disabled source</button
+        ><button id="source-update">
+          Update disabled source (requires new policy)
+        </button>
+        <label
+          >Mock permission policy JSON
+          <textarea id="policy-json" rows="10" cols="80"></textarea>
+        </label>
+        <button id="source-policy">
+          Approve mock policy for configured source
+        </button>
+        <button id="sources-refresh">Refresh source health</button>
+        <div id="sources" aria-label="Source health"></div>
+        <h2>Collection jobs and retries</h2>
+        <button id="jobs-refresh">Refresh jobs</button>
+        <div id="jobs"></div>
+        <h2>Manufacturer facts (separate from player evidence)</h2>
+        <button id="facts-refresh">Refresh facts</button>
+        <div id="facts"></div>
+      </section>
       <label
         >Review status
         <select id="status">
@@ -26,7 +62,11 @@
       <section id="queue" aria-label="Review queue"></section>
       <h2>Local export authorization (admin only)</h2>
       <p>Creates a local artifact. No upload or Lovable connection.</p>
-      <button id="export">Authorize analysis JSONL export</button>
+      <button id="preview">Preview eligible analysis export</button
+      ><button id="export">Authorize analysis JSONL export</button>
+      <button id="export-history">Export audit and retraction history</button>
+      <button id="purge">Purge expired metadata (admin)</button>
+      <pre id="operations" aria-live="polite"></pre>
     </main>
     <script src="/admin.js" defer></script>
   </body>

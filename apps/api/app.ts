@@ -10,7 +10,28 @@ import {
   type Actor,
 } from '../../packages/core/moderation.js';
 import { ingest } from '../../packages/core/pipeline.js';
-import { exportLocal, retractions } from '../../packages/adapters/export.js';
+import {
+  exportLocal,
+  retractions,
+  previewExport,
+} from '../../packages/adapters/export.js';
+import {
+  sourceHealth,
+  registerSource,
+  approveSourcePolicy,
+  enableMockSource,
+  suspendSource,
+} from '../../packages/core/sources.js';
+import { collectSource, collectDue } from '../../packages/core/collection.js';
+import { mockTransportFor } from '../../packages/connectors/mock-scenarios.js';
+import { PinnedHttpsTransport } from '../../packages/connectors/http.js';
+import {
+  correctProductMatch,
+  reviewFact,
+  purgeExpiredMetadata,
+  addCatalogProduct,
+} from '../../packages/core/operations.js';
+import type { RegistrySource } from '../../packages/contracts/sources.js';
 function equal(a: string, b: string) {
   const x = Buffer.from(a),
     y = Buffer.from(b);
@@ -109,15 +130,7 @@ export function app(
         await readFile(new URL('../admin/admin.js', import.meta.url), 'utf8'),
       ),
   );
-  server.get(
-    '/sources',
-    async () =>
-      (
-        await db.pool.query(
-          'SELECT s.*,p.status,p.permission_reference,p.expires_at FROM sources s JOIN source_policies p USING(policy_id) ORDER BY source_id',
-        )
-      ).rows,
-  );
+  server.get('/sources', async () => sourceHealth(db));
   server.post('/runs/fixtures', async (req) => {
     admin(req);
     const body = z
@@ -171,14 +184,16 @@ export function app(
     const { id } = z.object({ id: z.uuid() }).parse(req.params);
     return review(db, id, decision.parse(req.body), actor(req));
   });
-  server.post('/exports/preview', async () => ({
-    states: (
-      await db.pool.query(
-        'SELECT review_status,count(*)::int FROM observations GROUP BY review_status',
-      )
-    ).rows,
-    note: 'Final export rechecks current rights and quality; preview authorizes no publication.',
-  }));
+  server.post('/exports/preview', async (req) => {
+    const b = z
+      .strictObject({
+        type: z
+          .enum(['analysis_observations', 'explicit_rating_candidates'])
+          .default('analysis_observations'),
+      })
+      .parse(req.body ?? {});
+    return previewExport(db, actor(req), b.type);
+  });
   server.post('/exports/generate', async (req) => {
     const a = admin(req);
     const b = z
@@ -198,7 +213,7 @@ export function app(
   server.post('/sources/:id/disable', async (req) => {
     const a = admin(req);
     const { id } = z.object({ id: z.string() }).parse(req.params);
-    return suppress(db, { source_id: id }, 'source_disabled', a);
+    return suspendSource(db, id, a);
   });
   server.post('/takedowns', async (req) => {
     const a = admin(req);
@@ -207,5 +222,158 @@ export function app(
       .parse(req.body);
     return suppress(db, { item_id: b.item_id }, b.reason, a);
   });
+
+  server.get('/sources/:id', async (req) => {
+    const { id } = z.object({ id: z.string() }).parse(req.params);
+    return (
+      (
+        await db.pool.query(
+          'SELECT source_id,name,type,url,interval_seconds,daily_budget,min_request_interval_ms,settings FROM sources WHERE source_id=$1',
+          [id],
+        )
+      ).rows[0] ?? null
+    );
+  });
+  server.post('/sources', async (req) =>
+    registerSource(db, req.body, admin(req)),
+  );
+  server.put('/sources/:id', async (req) => {
+    const { id } = z.object({ id: z.string() }).parse(req.params);
+    const body = z
+      .object({ source_id: z.literal(id) })
+      .passthrough()
+      .parse(req.body);
+    return registerSource(db, body, admin(req), true);
+  });
+  server.post('/sources/:id/policy', async (req) => {
+    const { id } = z.object({ id: z.string() }).parse(req.params);
+    return approveSourcePolicy(db, id, req.body, admin(req));
+  });
+  server.post('/sources/:id/enable-mock', async (req) => {
+    const { id } = z.object({ id: z.string() }).parse(req.params);
+    return enableMockSource(db, id, admin(req));
+  });
+  server.post('/sources/:id/collect-mock', async (req) => {
+    const a = admin(req);
+    const { id } = z.object({ id: z.string() }).parse(req.params);
+    const b = z
+      .strictObject({
+        idempotency_key: z.string().min(8).max(128),
+        force: z.boolean().default(false),
+      })
+      .parse(req.body);
+    const row = (
+      await db.pool.query<{ type: RegistrySource['type'] }>(
+        'SELECT type FROM sources WHERE source_id=$1',
+        [id],
+      )
+    ).rows[0];
+    if (!row) throw new Error('Source not found');
+    return collectSource(db, id, b.idempotency_key, {
+      actor: a,
+      transport: mockTransportFor(row.type),
+      force: b.force,
+    });
+  });
+  server.post('/collections/due-mock', async (req) =>
+    collectDue(db, {
+      actor: admin(req),
+      transport: new PinnedHttpsTransport([]),
+      transportForSource: async (id) => {
+        const source = (
+          await db.pool.query<{ type: RegistrySource['type'] }>(
+            'SELECT type FROM sources WHERE source_id=$1',
+            [id],
+          )
+        ).rows[0]!;
+        return mockTransportFor(source.type);
+      },
+    }),
+  );
+  server.get('/sources/:id/events', async (req) => {
+    const { id } = z.object({ id: z.string() }).parse(req.params);
+    return (
+      await db.pool.query(
+        'SELECT actor_id,code,details,created_at FROM source_events WHERE source_id=$1 ORDER BY created_at DESC LIMIT 100',
+        [id],
+      )
+    ).rows;
+  });
+  server.get('/jobs', async (req) => {
+    const q = z
+      .object({
+        source_id: z.string().optional(),
+        limit: z.coerce.number().int().min(1).max(100).default(25),
+        offset: z.coerce.number().int().min(0).default(0),
+      })
+      .parse(req.query);
+    return (
+      await db.pool.query(
+        'SELECT job_id,source_id,run_key,state,attempts,error_code,next_retry_at,queued_at,external_cursor FROM crawl_jobs WHERE ($1::text IS NULL OR source_id=$1) ORDER BY queued_at DESC LIMIT $2 OFFSET $3',
+        [q.source_id ?? null, q.limit, q.offset],
+      )
+    ).rows;
+  });
+  server.get('/observations/:id/evidence', async (req) => {
+    const { id } = z.object({ id: z.uuid() }).parse(req.params);
+    return (
+      (
+        await db.pool.query(
+          'SELECT * FROM observation_evidence WHERE observation_id=$1',
+          [id],
+        )
+      ).rows[0] ?? null
+    );
+  });
+  server.post('/observations/:id/product-match', async (req) => {
+    const { id } = z.object({ id: z.uuid() }).parse(req.params);
+    return correctProductMatch(db, id, req.body, actor(req));
+  });
+  server.get(
+    '/products',
+    async () =>
+      (
+        await db.pool.query(
+          'SELECT product_id,slug,name,brand,type,generation,family,variant,configurations FROM catalog_products ORDER BY name',
+        )
+      ).rows,
+  );
+  server.post('/products', async (req) =>
+    addCatalogProduct(db, req.body, admin(req)),
+  );
+  server.get('/facts', async (req) => {
+    const q = z
+      .object({
+        limit: z.coerce.number().int().min(1).max(100).default(25),
+        offset: z.coerce.number().int().min(0).default(0),
+      })
+      .parse(req.query);
+    return (
+      await db.pool.query(
+        'SELECT f.*,i.canonical_url AS source_url,i.source_id FROM manufacturer_facts f JOIN source_items i USING(item_id) ORDER BY f.created_at DESC LIMIT $1 OFFSET $2',
+        [q.limit, q.offset],
+      )
+    ).rows;
+  });
+  server.post('/facts/:id/decision', async (req) => {
+    const { id } = z.object({ id: z.uuid() }).parse(req.params);
+    const b = z
+      .strictObject({ action: z.enum(['approve', 'reject', 'revoke']) })
+      .parse(req.body);
+    return reviewFact(db, id, b.action, actor(req));
+  });
+  server.post('/retention/purge', async (req) =>
+    purgeExpiredMetadata(db, admin(req)),
+  );
+  server.get(
+    '/exports/history',
+    async () =>
+      (
+        await db.pool.query(
+          'SELECT batch_id,manifest,retraction_required FROM export_batches ORDER BY produced_at DESC LIMIT 100',
+        )
+      ).rows,
+  );
+
   return server;
 }

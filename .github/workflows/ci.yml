@@ -22,6 +22,6 @@ jobs:
       - run: pnpm test:all
         env:
           DATABASE_URL: postgresql://tpr_dev:tpr_dev_fixture_only@127.0.0.1:55432/tpr_ingestion_test
-      - run: pnpm demo
+      - run: pnpm demo && pnpm demo:phase2 && pnpm smoke
       - if: always()
         run: pnpm db:down
