@@ -11,7 +11,12 @@ export default tseslint.config(
   {
     files: ['apps/admin/admin.js'],
     languageOptions: {
-      globals: { document: 'readonly', fetch: 'readonly', crypto: 'readonly' },
+      globals: {
+        document: 'readonly',
+        fetch: 'readonly',
+        crypto: 'readonly',
+        URLSearchParams: 'readonly',
+      },
     },
   },
 );

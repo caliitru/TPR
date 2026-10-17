@@ -253,14 +253,32 @@ function button(label, action) {
   return b;
 }
 async function sources() {
-  const list = await request('/sources');
+  const filters = new URLSearchParams();
+  for (const [key, id] of [
+    ['q', 'search'],
+    ['type', 'type'],
+    ['priority', 'priority'],
+    ['approval', 'approval'],
+    ['operational', 'operational'],
+  ]) {
+    const value = document.getElementById('source-' + id).value;
+    if (value) filters.set(key, value);
+  }
+  const list = await request('/sources?' + filters);
   const container = document.getElementById('sources');
   container.replaceChildren();
   for (const s of list) {
     const row = document.createElement('article');
     const p = document.createElement('p');
-    p.textContent = `${s.name} (${s.source_id}) — ${s.type}; enabled for mock: ${s.enabled}; live enabled: ${s.live_authorized}; policy: ${s.status}, ${s.scope}, expires ${s.expires_at}; quota ${s.quota_used}/${s.daily_budget}; last success ${s.last_success_at ?? 'never'}; error ${s.last_error_code ?? 'none'}; next ${s.next_collection_at ?? 'unset'}`;
+    p.textContent = `${s.name} (${s.source_id}) — ${s.configuration_status}; ${s.registry?.priority ?? 'unranked'}; ${s.operational_state}; ${s.type}; enabled for mock: ${s.enabled}; live enabled: ${s.live_authorized}; policy: ${s.status}, ${s.scope}, expires ${s.expires_at}; quota ${s.quota_used}/${s.daily_budget}; last success ${s.last_success_at ?? 'never'}; error ${s.last_error_code ?? 'none'}; next ${s.next_collection_at ?? 'unset'}`;
     row.append(p);
+    const details = document.createElement('details');
+    const summary = document.createElement('summary');
+    summary.textContent = 'Source policy, permission evidence and restrictions';
+    const policy = document.createElement('pre');
+    policy.textContent = JSON.stringify(s, null, 2);
+    details.append(summary, policy);
+    row.append(details);
     if (!s.type.startsWith('fixture-')) {
       row.append(
         button('Authorize mock source', async () => {
@@ -373,3 +391,7 @@ document.getElementById('export-history').onclick = () =>
 document.getElementById('purge').onclick = () =>
   perform(() => request('/retention/purge', {}));
 void perform(sources);
+
+for (const id of ['type', 'priority', 'approval', 'operational'])
+  document.getElementById('source-' + id).onchange = () => perform(sources);
+document.getElementById('source-search').onsearch = () => perform(sources);

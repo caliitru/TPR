@@ -18,7 +18,52 @@
       </p>
 
       <section aria-labelledby="source-heading">
-        <h2 id="source-heading">Source management and health</h2>
+        <h2 id="source-heading">Source management — Sources</h2>
+        <p>
+          Configured candidates have no collection permission. Approved policies
+          are mock only. Actively Collecting means synthetic HTTP only; live
+          collection is disabled globally.
+        </p>
+        <label>Search sources <input id="source-search" type="search" /></label>
+        <label
+          >Connector
+          <select id="source-type">
+            <option value="">All</option>
+            <option>youtube</option>
+            <option>rss</option>
+            <option>manufacturer</option>
+            <option>forum</option>
+            <option>api</option>
+            <option>approved-html</option>
+          </select></label
+        >
+        <label
+          >Priority
+          <select id="source-priority">
+            <option value="">All</option>
+            <option>P1</option>
+            <option>P2</option>
+            <option>P3</option>
+          </select></label
+        >
+        <label
+          >Permission
+          <select id="source-approval">
+            <option value="">All</option>
+            <option>pending</option>
+            <option>approved</option>
+            <option>revoked</option>
+          </select></label
+        >
+        <label
+          >Operation
+          <select id="source-operational">
+            <option value="">All</option>
+            <option>disabled</option>
+            <option>active</option>
+            <option>suspended</option>
+          </select></label
+        >
         <p>
           Register a disabled source, approve a mock-only permission policy,
           then explicitly authorize mock collection. These actions grant no

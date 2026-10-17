@@ -1,6 +1,62 @@
 import { z } from 'zod';
 import { sourceItem } from './index.js';
+export const registryMetadata = z.strictObject({
+  category: z
+    .enum([
+      'community',
+      'reddit',
+      'youtube',
+      'manufacturer',
+      'editorial',
+      'retailer',
+      'tpr',
+      'custom',
+    ])
+    .default('custom'),
+  domain: z.string().regex(/^[a-z0-9.-]+$/),
+  priority: z.enum(['P1', 'P2', 'P3']).default('P2'),
+  collection_methods: z
+    .array(
+      z.enum([
+        'official-api',
+        'official-feed',
+        'licensed-dataset',
+        'authorized-page',
+        'manual-discovery',
+        'member-contract',
+      ]),
+    )
+    .min(1)
+    .max(6),
+  content_types: z.array(z.string().min(1).max(80)).min(1).max(20),
+  purposes: z.array(z.string().min(1).max(120)).min(1).max(20),
+  commercial_use: z
+    .enum(['permission-required', 'prohibited', 'approved'])
+    .default('permission-required'),
+  api_availability: z
+    .enum(['official-api', 'unverified', 'contract-required'])
+    .default('unverified'),
+  attribution: z.string().min(1).max(1000),
+  deletion_policy: z.string().min(1).max(1000),
+  restrictions: z.array(z.string().min(1).max(500)).min(1).max(20),
+  notes: z.string().max(2000).default(''),
+});
+export const registryReview = z.strictObject({
+  source_verified: z.literal(true),
+  commercial_use_verified: z.literal(true),
+  access_verified: z.literal(true),
+  method: z.enum([
+    'official-api',
+    'official-feed',
+    'licensed-dataset',
+    'authorized-page',
+    'member-contract',
+  ]),
+  evidence_links: z.array(z.url().startsWith('https://')).min(1).max(10),
+  approved_content: z.array(z.string().min(1).max(80)).min(1).max(20),
+});
 export const sourceDefinition = z.strictObject({
+  registry: registryMetadata.optional(),
   source_id: z
     .string()
     .regex(/^[a-z][a-z0-9-]{2,79}$/)
@@ -39,6 +95,7 @@ export const sourceDefinition = z.strictObject({
 });
 export type SourceDefinition = z.infer<typeof sourceDefinition>;
 export const policyApproval = z.strictObject({
+  registry_review: registryReview.optional(),
   permission_reference: z.string().min(10).max(500),
   expires_at: z.iso.datetime({ offset: true }),
   scope: z.literal('mock'),
@@ -84,6 +141,8 @@ export const externalRecord = z.strictObject({
 });
 export type ExternalRecord = z.infer<typeof externalRecord>;
 export interface RegistrySource extends SourceDefinition {
+  registry_review?: z.infer<typeof registryReview> | null;
+  operational_state?: string;
   enabled: boolean;
   policy_id: string;
   status: string;

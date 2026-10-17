@@ -22,7 +22,7 @@
     "typecheck": "tsc --noEmit",
     "build": "tsc && node scripts/copy-static.mjs",
     "test": "vitest run tests/unit.test.ts tests/phase2-unit.test.ts",
-    "test:integration": "vitest run tests/integration.test.ts tests/phase2-integration.test.ts",
+    "test:integration": "vitest run tests/integration.test.ts tests/phase2-integration.test.ts tests/registry-integration.test.ts",
     "test:all": "vitest run",
     "db:test:create": "tsx scripts/create-test-db.ts",
     "smoke": "tsx scripts/smoke.ts",

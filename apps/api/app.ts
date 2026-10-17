@@ -130,7 +130,7 @@ export function app(
         await readFile(new URL('../admin/admin.js', import.meta.url), 'utf8'),
       ),
   );
-  server.get('/sources', async () => sourceHealth(db));
+  server.get('/sources', async (req) => sourceHealth(db, req.query));
   server.post('/runs/fixtures', async (req) => {
     admin(req);
     const body = z
@@ -228,7 +228,7 @@ export function app(
     return (
       (
         await db.pool.query(
-          'SELECT source_id,name,type,url,interval_seconds,daily_budget,min_request_interval_ms,settings FROM sources WHERE source_id=$1',
+          'SELECT source_id,name,type,url,interval_seconds,daily_budget,min_request_interval_ms,settings,registry FROM sources WHERE source_id=$1',
           [id],
         )
       ).rows[0] ?? null
