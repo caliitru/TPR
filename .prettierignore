@@ -1,0 +1,5 @@
+pnpm-lock.yaml
+artifacts
+dist
+node_modules
+.env

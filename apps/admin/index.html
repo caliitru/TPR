@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>TPR — Fixture Review</title>
+  </head>
+  <body>
+    <main>
+      <h1>Player Consensus — Private Fixture Review</h1>
+      <p>
+        Synthetic observations only. Approval permits analysis, never production
+        publication. No source bodies are retained.
+      </p>
+      <label
+        >Review status
+        <select id="status">
+          <option>staged</option>
+          <option>approved_for_analysis</option>
+          <option>rejected</option>
+          <option>revoked</option>
+        </select></label
+      ><button id="refresh">Refresh</button
+      ><button id="previous">Previous</button><button id="next">Next</button>
+      <p id="message" role="status"></p>
+      <section id="queue" aria-label="Review queue"></section>
+      <h2>Local export authorization (admin only)</h2>
+      <p>Creates a local artifact. No upload or Lovable connection.</p>
+      <button id="export">Authorize analysis JSONL export</button>
+    </main>
+    <script src="/admin.js" defer></script>
+  </body>
+</html>

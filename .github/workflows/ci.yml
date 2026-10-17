@@ -1,0 +1,27 @@
+name: Fixture safety and integration
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint && pnpm typecheck && pnpm build
+      - run: pnpm db:up && pnpm db:migrate && pnpm db:test:create
+      - run: pnpm test:all
+        env:
+          DATABASE_URL: postgresql://tpr_dev:tpr_dev_fixture_only@127.0.0.1:55432/tpr_ingestion_test
+      - run: pnpm demo
+      - if: always()
+        run: pnpm db:down
