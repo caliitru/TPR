@@ -14,7 +14,7 @@ try {
   for (let i = 0; i < 3; i++) runs.push(await ingest(db, randomUUID()));
   const counts = (
     await db.pool.query(
-      `SELECT (SELECT count(*)::int FROM source_items) AS items,(SELECT count(*)::int FROM observations) AS observations,(SELECT count(*)::int FROM observations WHERE product_id IS NULL) AS unresolved`,
+      `SELECT (SELECT count(*)::int FROM source_items WHERE source_id LIKE 'fixture-%') AS items,(SELECT count(*)::int FROM observations WHERE payload->>'source_id' LIKE 'fixture-%') AS observations,(SELECT count(*)::int FROM observations WHERE product_id IS NULL AND payload->>'source_id' LIKE 'fixture-%') AS unresolved`,
     )
   ).rows[0] as { items: number; observations: number; unresolved: number };
   assert.equal(counts.observations, 120);
@@ -23,7 +23,7 @@ try {
   const actor = { id: 'demo-reviewer', role: 'admin' as const };
   const staged = (
     await db.pool.query<{ observation_id: string }>(
-      `SELECT observation_id FROM observations WHERE review_status='staged' AND payload->'quality_flags'='[]'::jsonb ORDER BY (payload->'product_match'->>'candidate_label'='Ping G440 Max Driver') DESC,(payload->'explicit_rating' <> 'null'::jsonb) DESC,observation_id LIMIT 2`,
+      `SELECT observation_id FROM observations WHERE review_status='staged' AND payload->>'source_id' LIKE 'fixture-%' AND payload->'quality_flags'='[]'::jsonb ORDER BY (payload->'product_match'->>'candidate_label'='Ping G440 Max Driver') DESC,(payload->'explicit_rating' <> 'null'::jsonb) DESC,observation_id LIMIT 2`,
     )
   ).rows;
   const decisions = [];

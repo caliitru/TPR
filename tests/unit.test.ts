@@ -36,6 +36,13 @@ const sample = connector.fetchMetadata((await connector.discover())[0]);
 describe('hard isolation', () => {
   it('defaults to local-only and refuses production mode/bindings/flags', () => {
     expect(config({}).databaseUrl).toBe(localDatabase);
+    expect(
+      config({
+        NETWORK_ENABLED: 'false',
+        CONNECTOR_ENABLED: 'false',
+        PRODUCTION_EXPORT_ENABLED: 'false',
+      }).databaseUrl,
+    ).toBe(localDatabase);
     for (const env of [
       {
         DATABASE_URL:

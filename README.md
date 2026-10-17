@@ -1,6 +1,6 @@
 # The Players' Room — Content Intelligence
 
-Standalone **fixture-only** ingestion and moderation service. No Lovable/Supabase client, production connector, or automatic publication exists. All sample reports, player contexts and ratings are synthetic test data. They must never be imported into the live website.
+Standalone **fixture and mocked-external** ingestion and moderation service. Phase 2 extends the existing pipeline with permissioned source management, connector adapters, quotas, and a separate manufacturer-fact lane. See [Phase 2 operations](docs/PHASE2-OPERATIONS.md). No Lovable/Supabase client or automatic publication exists. The guarded HTTPS implementation is not activated by any application entry point. All sample reports, player contexts and ratings are synthetic test data. They must never be imported into the live website.
 
 ## Requirements and quick start
 
@@ -12,6 +12,7 @@ pnpm db:up
 pnpm db:migrate
 pnpm seed
 pnpm demo
+pnpm demo:phase2                      # mocked YouTube, RSS, manufacturer and forum HTTP
 ```
 
 In the cloud sandbox, use `pnpm install --frozen-lockfile --store-dir /workspace/.pnpm-store` to keep the package store writable. The install only permits esbuild's required build script. Dependencies and integrity hashes are pinned in `pnpm-lock.yaml`.
@@ -105,7 +106,7 @@ Compiled execution is supported: `node dist/apps/worker/cli.js list` and, with t
 | `contracts`           | Original JSON Schema and disabled example live-source configuration                     |
 | `fixtures`            | Synthetic catalog plus 123 input records in three formats                               |
 
-The 12 domain tables model sources/policies, jobs/events, items, catalog/aliases, observations/reviews, exports and tombstones. Migration execution uses Drizzle transactions, a PostgreSQL advisory lock and a recorded SHA-256 checksum. SQL is authoritative for check constraints, unique indexes and the append-only audit trigger. Queries use parameterized PostgreSQL transactions; no ORM-generated mutation reaches another database.
+The original 12 domain tables model sources/policies, jobs/events, items, catalog/aliases, observations/reviews, exports and tombstones. Migration execution uses Drizzle transactions, a PostgreSQL advisory lock and a recorded SHA-256 checksum. SQL is authoritative for check constraints, unique indexes and the append-only audit trigger. Queries use parameterized PostgreSQL transactions; no ORM-generated mutation reaches another database.
 
 Jobs claim rows with `SKIP LOCKED`, commit an entire fixture batch and checkpoint atomically, retry at most three times with exponential delay, and expose a dead-letter state. A crashed worker's 30-second lease is reclaimable. `pnpm cli work` drains due jobs; rerun it after a retry's due time. There is no always-on scheduler in this phase. Unique keys and fingerprints preserve idempotency under concurrent workers. Invalid records create reason-code events without retaining raw content. Revised source bodies are quarantined for a separate review, rather than silently changing approved evidence.
 
@@ -129,10 +130,10 @@ pnpm cli retractions > artifacts/retractions.json
 
 Tombstones suppress replay; review events capture revocation and affected batches are marked `retraction_required`. Already-created artifacts are immutable historical files: withdraw/delete copies and deliver the retraction list to any local downstream consumer. The service does not reach into other systems or promise remote deletion. Full retention/purge automation and deployment key rotation are Phase 2/3 work.
 
-`pnpm db:down` stops services while preserving the volume. A destructive rollback is guarded: `ALLOW_LOCAL_RESET=yes pnpm db:rollback`, then `pnpm db:migrate` restores the empty schema. **Rollback deletes local ingestion data.** Never run integration/reset commands against a populated dev database you wish to preserve.
+`pnpm db:down` stops services while preserving the volume. Rollback refuses to discard non-fixture sources or multiple fact revisions; preserve local work before a schema downgrade. A destructive rollback of a fixture-only database is guarded: `ALLOW_LOCAL_RESET=yes pnpm db:rollback`, then `pnpm db:migrate` restores the empty schema. **Rollback deletes local ingestion data.** Never run integration/reset commands against a populated dev database you wish to preserve.
 
 ## Scope and remaining work
 
-Phase 0/1 delivers the synthetic vertical slice, including a minimal reviewer UI rather than a frontend framework, a PostgreSQL queue rather than Redis, and explainable fixture rules rather than a hosted LLM. No deployment or production integration is included. Before live data: source-by-source permission review, policy activation UI, approved RSS/official API connectors, SSRF/DNS/redirect and quota controls, retention/deletion automation, representative licensed evaluation, per-person authentication, operational telemetry and separate integration approval. No Reddit scraping or transcript downloader exists.
+Phase 0/1 delivers the synthetic vertical slice, including a minimal reviewer UI rather than a frontend framework, a PostgreSQL queue rather than Redis, and explainable fixture rules rather than a hosted LLM. No deployment or production integration is included. Phase 2 implements the source UI, mocked connector adapters, DNS/SSRF/response bounds, persistent quotas and metadata purge controls. Before live data, source-by-source permission review and separate activation approval, licensed evaluation, per-person deployment authentication, and operational hardening are still required. No Reddit scraping or transcript downloader exists.
 
 The original requirements are preserved in `docs/TPR-TECHNICAL-AUDIT-AND-INGESTION-ARCHITECTURE.md`, `AGENTS.md` and `tasks/IMPLEMENTATION-BACKLOG.md`. The archived `docs/CODEX-START-PROMPT.md` has an older Phase-0-only stopping point; the current user instruction authorized Phase 0 and Phase 1 together. No Lovable project, Supabase database, scoring function, Consensus Score or production player signal has been changed.

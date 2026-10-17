@@ -73,7 +73,9 @@ export async function review(
       if (
         !obs.product_match.catalog_product_id ||
         obs.quality_flags.length ||
-        obs.observation_kind !== 'first_hand_player_experience'
+        !['first_hand_player_experience', 'editorial'].includes(
+          obs.observation_kind,
+        )
       )
         throw new Error('Quality gate prevents approval');
       if (
@@ -122,6 +124,7 @@ export async function suppress(
   target: { source_id?: string; item_id?: string },
   reason: string,
   actor: Actor,
+  permanent = true,
 ) {
   requireActor(actor, true);
   if (
@@ -142,6 +145,11 @@ export async function suppress(
         target.source_id,
       ]);
     }
+    if (target.item_id)
+      await c.query(
+        'SELECT item_id FROM source_items WHERE item_id=$1 FOR UPDATE',
+        [target.item_id],
+      );
     const rows = (
       await c.query<{
         observation_id: string;
@@ -152,16 +160,28 @@ export async function suppress(
         [target.source_id ?? null, target.item_id ?? null],
       )
     ).rows;
-    await c.query(
-      `INSERT INTO tombstones(tombstone_id,source_id,item_id,reason,actor_id) VALUES($1,$2,$3,$4,$5)`,
-      [
-        randomUUID(),
-        target.source_id ?? null,
-        target.item_id ?? null,
-        reason,
-        actor.id,
-      ],
-    );
+    if (permanent) {
+      await c.query(
+        `INSERT INTO tombstones(tombstone_id,source_id,item_id,reason,actor_id,canonical_url_hash) VALUES($1,$2,$3,$4,$5,$6)`,
+        [
+          randomUUID(),
+          target.source_id ?? null,
+          target.item_id ?? null,
+          reason,
+          actor.id,
+          target.item_id
+            ? hash(
+                (
+                  await c.query<{ canonical_url: string }>(
+                    'SELECT canonical_url FROM source_items WHERE item_id=$1',
+                    [target.item_id],
+                  )
+                ).rows[0]?.canonical_url ?? '',
+              )
+            : null,
+        ],
+      );
+    }
     for (const row of rows) {
       if (row.review_status === 'revoked') continue;
       const updated = observation.parse({
@@ -188,6 +208,10 @@ export async function suppress(
         ],
       );
     }
+    await c.query(
+      `UPDATE manufacturer_facts SET review_status='revoked' WHERE item_id IN (SELECT item_id FROM source_items WHERE ($1::text IS NOT NULL AND source_id=$1) OR ($2::uuid IS NOT NULL AND item_id=$2))`,
+      [target.source_id ?? null, target.item_id ?? null],
+    );
     const ids = rows.map((r) => r.observation_id);
     await c.query(
       `UPDATE export_batches SET retraction_required=true WHERE observation_ids && $1::uuid[]`,

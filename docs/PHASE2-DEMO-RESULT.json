@@ -1,0 +1,61 @@
+{
+  "synthetic": true,
+  "mode": "mock-only",
+  "live_requests": 0,
+  "mock_counts": {
+    "mock_observations": 5,
+    "separate_facts": 1
+  },
+  "collections": [
+    {
+      "source": "demo-youtube",
+      "first_state": "completed",
+      "repeat_state": "completed",
+      "new_observations_on_repeat": 0,
+      "new_facts_on_repeat": 0,
+      "mock_http_requests": 4
+    },
+    {
+      "source": "demo-rss",
+      "first_state": "completed",
+      "repeat_state": "completed",
+      "new_observations_on_repeat": 0,
+      "new_facts_on_repeat": 0,
+      "mock_http_requests": 2
+    },
+    {
+      "source": "demo-manufacturer",
+      "first_state": "completed",
+      "repeat_state": "completed",
+      "new_observations_on_repeat": 0,
+      "new_facts_on_repeat": 0,
+      "mock_http_requests": 2
+    },
+    {
+      "source": "demo-forum",
+      "first_state": "completed",
+      "repeat_state": "completed",
+      "new_observations_on_repeat": 0,
+      "new_facts_on_repeat": 0,
+      "mock_http_requests": 4
+    }
+  ],
+  "local_export_count_including_existing_approved_data": 2,
+  "fixture_demo_after_phase2": {
+    "counts": {
+      "items": 123,
+      "observations": 120,
+      "unresolved": 12
+    },
+    "decisions": [
+      {
+        "product": "Ping G440 Max Driver",
+        "status": "approved_for_analysis"
+      },
+      {
+        "product": "Ping G440 Max Driver",
+        "status": "rejected"
+      }
+    ]
+  }
+}

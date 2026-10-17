@@ -1,3 +1,4 @@
+import type pg from 'pg';
 import { mkdir, writeFile, rename, rm } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { randomUUID } from 'node:crypto';
@@ -63,63 +64,7 @@ export async function exportLocal(
   await mkdir(temp, { mode: 0o700 });
   try {
     const manifest = await transaction(db, async (c) => {
-      const rows = (
-        await c.query<Row>(
-          `SELECT o.payload,o.export_fields,p.slug FROM observations o JOIN source_items i USING(item_id) JOIN catalog_products p ON p.product_id=o.product_id WHERE o.review_status='approved_for_analysis' AND NOT EXISTS(SELECT 1 FROM tombstones t WHERE t.item_id=o.item_id OR t.source_id=i.source_id) ORDER BY o.observation_id FOR SHARE OF o`,
-        )
-      ).rows;
-      const output: unknown[] = [];
-      const included: Observation[] = [];
-      for (const row of rows) {
-        const obs = observation.parse(row.payload);
-        try {
-          const currentPolicy = await policy(c, obs.source_id);
-          if (currentPolicy.policy_id !== obs.rights_policy_id) continue;
-          assertPolicy(
-            currentPolicy,
-            options.type === 'analysis_observations'
-              ? 'export_analysis'
-              : 'export_ratings',
-          );
-        } catch {
-          continue;
-        }
-        if (
-          obs.review_status !== 'approved_for_analysis' ||
-          obs.quality_flags.length ||
-          obs.observation_kind !== 'first_hand_player_experience'
-        )
-          continue;
-        if (options.type === 'analysis_observations') output.push(obs);
-        else {
-          const r = obs.explicit_rating;
-          // No remapping, no rounding, no inferred context/booleans. Only an explicit, understood native 1–5 scale.
-          if (
-            !r ||
-            r.scale_min !== 1 ||
-            r.scale_max !== 5 ||
-            !Number.isInteger(r.value) ||
-            !obs.player_type ||
-            obs.player_type_basis !== 'explicit' ||
-            row.export_fields.would_recommend === null ||
-            row.export_fields.worth_the_price === null
-          )
-            continue;
-          output.push(
-            ratingCandidate.parse({
-              slug: row.slug,
-              player_type: obs.player_type,
-              rating: r.value,
-              would_recommend: row.export_fields.would_recommend,
-              worth_the_price: row.export_fields.worth_the_price,
-              source: obs.source_id,
-              source_url: obs.source_url,
-              observed_at: obs.published_at,
-            }),
-          );
-        }
-        included.push(obs);
-      }
+      const { output, included } = await eligibleExport(c, options.type);
       const jsonl =
         output.map((o) => JSON.stringify(o)).join('\n') +
         (output.length ? '\n' : '');
@@ -219,4 +164,86 @@ export async function retractions(db: Database) {
       `SELECT batch_id,file_sha256,produced_at FROM export_batches WHERE retraction_required=true ORDER BY produced_at`,
     )
   ).rows;
+}
+
+async function eligibleExport(c: pg.PoolClient, type: ExportType) {
+  const rows = (
+    await c.query<Row>(
+      `SELECT o.payload,o.export_fields,p.slug FROM observations o JOIN source_items i USING(item_id) JOIN catalog_products p ON p.product_id=o.product_id WHERE o.review_status='approved_for_analysis' AND NOT EXISTS(SELECT 1 FROM tombstones t WHERE t.item_id=o.item_id OR t.source_id=i.source_id) ORDER BY o.observation_id FOR SHARE OF o`,
+    )
+  ).rows;
+  const output: unknown[] = [];
+  const included: Observation[] = [];
+  for (const row of rows) {
+    const obs = observation.parse(row.payload);
+    try {
+      const currentPolicy = await policy(c, obs.source_id);
+      if (currentPolicy.policy_id !== obs.rights_policy_id) continue;
+      assertPolicy(
+        currentPolicy,
+        type === 'analysis_observations' ? 'export_analysis' : 'export_ratings',
+      );
+    } catch {
+      continue;
+    }
+    if (
+      obs.review_status !== 'approved_for_analysis' ||
+      obs.quality_flags.length ||
+      !['first_hand_player_experience', 'editorial'].includes(
+        obs.observation_kind,
+      )
+    )
+      continue;
+    if (type === 'analysis_observations') output.push(obs);
+    else {
+      const r = obs.explicit_rating;
+      // No remapping, no rounding, no inferred context/booleans. Only an explicit, understood native 1–5 scale.
+      if (
+        !r ||
+        obs.observation_kind !== 'first_hand_player_experience' ||
+        !obs.published_at ||
+        r.scale_min !== 1 ||
+        r.scale_max !== 5 ||
+        !Number.isInteger(r.value) ||
+        !obs.player_type ||
+        obs.player_type_basis !== 'explicit' ||
+        row.export_fields.would_recommend === null ||
+        row.export_fields.worth_the_price === null
+      )
+        continue;
+      output.push(
+        ratingCandidate.parse({
+          slug: row.slug,
+          player_type: obs.player_type,
+          rating: r.value,
+          would_recommend: row.export_fields.would_recommend,
+          worth_the_price: row.export_fields.worth_the_price,
+          source: obs.source_id,
+          source_url: obs.source_url,
+          observed_at: obs.published_at,
+        }),
+      );
+    }
+    included.push(obs);
+  }
+
+  return { output, included };
+}
+export async function previewExport(
+  db: Database,
+  actor: Actor,
+  type: ExportType = 'analysis_observations',
+) {
+  requireActor(actor);
+  if (!['analysis_observations', 'explicit_rating_candidates'].includes(type))
+    throw new Error('Unknown export type');
+  return transaction(db, async (c) => {
+    const { output } = await eligibleExport(c, type);
+    return {
+      type,
+      eligible: output.length,
+      publication: false,
+      local_only: true,
+    };
+  });
 }
