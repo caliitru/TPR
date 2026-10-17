@@ -137,3 +137,9 @@ Tombstones suppress replay; review events capture revocation and affected batche
 Phase 0/1 delivers the synthetic vertical slice, including a minimal reviewer UI rather than a frontend framework, a PostgreSQL queue rather than Redis, and explainable fixture rules rather than a hosted LLM. No deployment or production integration is included. Phase 2 implements the source UI, mocked connector adapters, DNS/SSRF/response bounds, persistent quotas and metadata purge controls. Before live data, source-by-source permission review and separate activation approval, licensed evaluation, per-person deployment authentication, and operational hardening are still required. No Reddit scraping or transcript downloader exists.
 
 The original requirements are preserved in `docs/TPR-TECHNICAL-AUDIT-AND-INGESTION-ARCHITECTURE.md`, `AGENTS.md` and `tasks/IMPLEMENTATION-BACKLOG.md`. The archived `docs/CODEX-START-PROMPT.md` has an older Phase-0-only stopping point; the current user instruction authorized Phase 0 and Phase 1 together. No Lovable project, Supabase database, scoring function, Consensus Score or production player signal has been changed.
+
+## Source Registry
+
+Populate the 43 disabled source candidates after migration with `pnpm cli registry-seed --reviewer local-registry-admin`. Repeating the command preserves all existing decisions and inserts zero records. `pnpm cli sources` and the existing dashboard Sources section expose the centralized registry, search/filter controls, policy evidence, health and collection history. All seeded permissions are pending; live collection remains disabled.
+
+See [Source Registry setup, catalog and approval workflow](docs/SOURCE-REGISTRY.md) and [implementation results](docs/SOURCE-REGISTRY-IMPLEMENTATION.md). Existing fixture and Phase 2 commands continue to work unchanged.

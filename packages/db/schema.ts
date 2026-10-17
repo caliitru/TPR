@@ -21,9 +21,12 @@ export const sourcePolicies = pgTable('source_policies', {
   expiresAt: time('expires_at').notNull(),
   retention: jsonb('retention').notNull(),
   version: integer('version').notNull().default(1),
+  registryReview: jsonb('registry_review'),
   scope: text('scope').notNull().default('mock'),
 });
 export const sources = pgTable('sources', {
+  registry: jsonb('registry'),
+  operationalState: text('operational_state').notNull().default('disabled'),
   sourceId: text('source_id').primaryKey(),
   name: text('name').notNull(),
   type: text('type').notNull(),

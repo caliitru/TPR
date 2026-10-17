@@ -1,3 +1,4 @@
+import { seedSourceCatalog } from '../../packages/db/source-catalog.js';
 import { readFile } from 'node:fs/promises';
 import {
   registerSource,
@@ -134,6 +135,9 @@ try {
       result = await retractions(db);
       break;
 
+    case 'registry-seed':
+      result = await seedSourceCatalog(db, actor);
+      break;
     case 'sources':
       result = await sourceHealth(db);
       break;

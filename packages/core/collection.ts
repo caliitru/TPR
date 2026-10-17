@@ -46,6 +46,8 @@ export async function collectSource(
   let sourcePolicy = '';
   const claimed = await transaction(db, async (c) => {
     const source = await readSource(c, sourceId, true);
+    if (source.operational_state === 'suspended')
+      throw new CollectionError('source_suspended');
     const jobId = stableId(`collection:${sourceId}:${runKey}`);
     await c.query(
       `INSERT INTO crawl_jobs(job_id,source_id,run_key,request_key) VALUES($1,$2,$3,$4) ON CONFLICT(request_key) DO NOTHING`,
@@ -215,6 +217,20 @@ export async function collectSource(
         throw new CollectionError('policy_changed');
       const products = await catalog(c);
       for (const record of batch.records) {
+        if (source.registry && source.registry.category !== 'retailer') {
+          const contentType =
+            source.type === 'manufacturer'
+              ? 'product-facts'
+              : source.registry.category === 'editorial'
+                ? 'editorial-metadata'
+                : source.registry.category === 'youtube'
+                  ? 'discovery-metadata'
+                  : record.kind === 'player'
+                    ? 'firsthand-experience'
+                    : 'product-discovery';
+          if (!source.registry_review?.approved_content.includes(contentType))
+            throw new CollectionError('unapproved_content_type');
+        }
         const url = allowedUrl(record.url, source.settings.allowed_hosts, true);
         for (const k of [...url.searchParams.keys()])
           if (/^(utm_|fbclid|gclid)/i.test(k)) url.searchParams.delete(k);
@@ -319,6 +335,14 @@ export async function collectSource(
             ],
           );
         }
+        // Commercial enrichment is retained as source metadata only, never player evidence.
+        if (source.registry?.category === 'retailer') continue;
+        if (
+          source.registry?.category === 'editorial' &&
+          record.kind !== 'editorial' &&
+          record.kind !== 'discovery'
+        )
+          throw new CollectionError('unapproved_content_type');
         if (source.type === 'manufacturer') {
           if (!source.allowed_operations.manufacturer_facts)
             throw new CollectionError('policy_denied');
@@ -430,6 +454,9 @@ export async function collectSource(
         '401',
         'policy_denied',
         'policy_changed',
+        'unapproved_content_type',
+        'commercial_permission_required',
+        'source_suspended',
         'destination_denied',
         'ssrf_denied',
         'live_collection_disabled',
@@ -481,7 +508,7 @@ export async function collectDue(
   requireActor(options.actor, true);
   const due = (
     await db.pool.query<{ source_id: string }>(
-      `SELECT source_id FROM sources WHERE enabled=true AND type NOT LIKE 'fixture-%' AND (next_collection_at IS NULL OR next_collection_at<=now()) ORDER BY next_collection_at NULLS FIRST LIMIT 100`,
+      `SELECT s.source_id FROM sources s JOIN source_policies p USING(policy_id) WHERE s.enabled=true AND s.operational_state='active' AND p.status='approved' AND p.expires_at>now() AND s.type NOT LIKE 'fixture-%' AND (s.next_collection_at IS NULL OR s.next_collection_at<=now()) ORDER BY CASE s.registry->>'priority' WHEN 'P1' THEN 1 WHEN 'P3' THEN 3 ELSE 2 END,s.next_collection_at NULLS FIRST,s.source_id LIMIT 100`,
     )
   ).rows;
   const results = [];

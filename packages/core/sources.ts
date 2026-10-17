@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { randomUUID } from 'node:crypto';
 import type pg from 'pg';
 import {
@@ -27,7 +28,7 @@ export async function readSource(
 ): Promise<RegistrySource> {
   const source = (
     await c.query<RegistrySource>(
-      `SELECT s.*,p.status,p.expires_at,p.allowed_operations,p.retention,p.scope FROM sources s JOIN source_policies p USING(policy_id) WHERE source_id=$1 ${lock ? 'FOR UPDATE OF s FOR SHARE OF p' : ''}`,
+      `SELECT s.*,p.status,p.expires_at,p.allowed_operations,p.retention,p.scope,p.registry_review FROM sources s JOIN source_policies p USING(policy_id) WHERE source_id=$1 ${lock ? 'FOR UPDATE OF s FOR SHARE OF p' : ''}`,
       [id],
     )
   ).rows[0];
@@ -53,6 +54,13 @@ export function assertSource(source: RegistrySource, mode: 'mock' | 'live') {
     !source.allowed_operations.manufacturer_facts
   )
     throw new CollectionError('policy_denied');
+  if (
+    source.registry &&
+    (source.registry.commercial_use !== 'approved' || !source.registry_review)
+  )
+    throw new CollectionError('commercial_permission_required');
+  if (source.registry && source.operational_state === 'suspended')
+    throw new CollectionError('source_suspended');
   allowedUrl(source.url, source.settings.allowed_hosts);
 }
 export async function registerSource(
@@ -94,7 +102,7 @@ export async function registerSource(
     );
     if (current)
       await c.query(
-        `UPDATE sources SET name=$2,type=$3,url=$4,settings=$5,interval_seconds=$6,daily_budget=$7,min_request_interval_ms=$8,policy_id=$9,enabled=false,etag=NULL,last_modified=NULL,discovery_state='{}',next_collection_at=NULL WHERE source_id=$1`,
+        `UPDATE sources SET name=$2,type=$3,url=$4,settings=$5,interval_seconds=$6,daily_budget=$7,min_request_interval_ms=$8,policy_id=$9,enabled=false,operational_state='disabled',etag=NULL,last_modified=NULL,discovery_state='{}',next_collection_at=NULL WHERE source_id=$1`,
         [
           def.source_id,
           def.name,
@@ -122,11 +130,16 @@ export async function registerSource(
           policy,
         ],
       );
+    await c.query('UPDATE sources SET registry=$2 WHERE source_id=$1', [
+      def.source_id,
+      def.registry ?? null,
+    ]);
     await sourceEvent(
       c,
       def.source_id,
       actor.id,
       current ? 'source_reconfigured' : 'source_registered',
+      { configuration: def },
     );
     return readSource(c, def.source_id);
   });
@@ -147,7 +160,47 @@ export async function approveSourcePolicy(
   if (approval.operations.analyze_body && !approval.operations.derived_insights)
     throw new CollectionError('invalid_policy_operations');
   return transaction(db, async (c) => {
-    await readSource(c, id, true);
+    const current = await readSource(c, id, true);
+    if (current.registry) {
+      const review = approval.registry_review;
+      if (!review || current.registry.commercial_use !== 'approved')
+        throw new CollectionError('commercial_permission_required');
+      if (
+        !current.registry.collection_methods.includes(review.method) ||
+        review.approved_content.some(
+          (t) => !current.registry!.content_types.includes(t),
+        )
+      )
+        throw new CollectionError('unapproved_collection_scope');
+      const expectedMethod =
+        current.type === 'rss' ||
+        (current.type === 'manufacturer' && current.settings.format !== 'json')
+          ? 'official-feed'
+          : 'official-api';
+      if (review.method !== expectedMethod)
+        throw new CollectionError('collection_method_not_implemented');
+      if (
+        (current.registry.category === 'manufacturer' &&
+          current.type !== 'manufacturer') ||
+        (current.registry.category === 'youtube' &&
+          current.type !== 'youtube') ||
+        (current.registry.category === 'retailer' && current.type !== 'api')
+      )
+        throw new CollectionError('registry_connector_mismatch');
+      if (
+        current.registry.category === 'retailer' &&
+        (approval.operations.derived_insights ||
+          approval.operations.analyze_body ||
+          approval.operations.manufacturer_facts)
+      )
+        throw new CollectionError('retailer_evidence_prohibited');
+      if (
+        current.registry.category === 'manufacturer' &&
+        (approval.operations.derived_insights ||
+          approval.operations.analyze_body)
+      )
+        throw new CollectionError('manufacturer_player_evidence_prohibited');
+    }
     const policy = randomUUID();
     const v = (
       await c.query<{ version: number }>(
@@ -167,7 +220,11 @@ export async function approveSourcePolicy(
       ],
     );
     await c.query(
-      `UPDATE sources SET policy_id=$2,enabled=false,discovery_state='{}',etag=NULL,last_modified=NULL WHERE source_id=$1`,
+      'UPDATE source_policies SET registry_review=$2 WHERE policy_id=$1',
+      [policy, approval.registry_review ?? null],
+    );
+    await c.query(
+      `UPDATE sources SET policy_id=$2,enabled=false,operational_state='disabled',discovery_state='{}',etag=NULL,last_modified=NULL WHERE source_id=$1`,
       [id, policy],
     );
     await c.query(
@@ -176,6 +233,7 @@ export async function approveSourcePolicy(
     );
     await sourceEvent(c, id, actor.id, 'policy_approved_mock', {
       policy_id: policy,
+      registry_review: approval.registry_review ?? null,
     });
     return readSource(c, id);
   });
@@ -189,6 +247,8 @@ export async function enableMockSource(db: Database, id: string, actor: Actor) {
         .rowCount
     )
       throw new CollectionError('source_permanently_revoked');
+    if (source.operational_state === 'suspended')
+      throw new CollectionError('source_suspended');
     assertSource({ ...source, enabled: true }, 'mock');
     await c.query(
       'UPDATE sources SET enabled=true,next_collection_at=now() WHERE source_id=$1',
@@ -212,14 +272,33 @@ export async function suspendSource(db: Database, id: string, actor: Actor) {
       `UPDATE manufacturer_facts SET review_status='revoked' WHERE item_id IN (SELECT item_id FROM source_items WHERE source_id=$1)`,
       [id],
     );
+    await c.query(
+      "UPDATE sources SET operational_state='suspended' WHERE source_id=$1",
+      [id],
+    );
     await sourceEvent(c, id, actor.id, 'source_suspended');
   });
   return result;
 }
-export async function sourceHealth(db: Database) {
+export const sourceFilters = z.strictObject({
+  q: z.string().max(120).optional(),
+  type: sourceDefinition.shape.type.optional(),
+  priority: z.enum(['P1', 'P2', 'P3']).optional(),
+  approval: z.enum(['pending', 'approved', 'revoked']).optional(),
+  operational: z.enum(['disabled', 'active', 'suspended']).optional(),
+});
+export async function sourceHealth(db: Database, input: unknown = {}) {
+  const f = sourceFilters.parse(input);
   return (
     await db.pool.query(
-      `SELECT s.source_id,s.name,s.type,s.url,s.enabled,s.live_authorized,s.interval_seconds,s.last_success_at,s.last_error_code,s.next_collection_at,s.daily_budget,s.quota_used,s.min_request_interval_ms,s.policy_id,p.status,p.scope,p.permission_reference,p.expires_at,(p.expires_at<=now()) AS policy_expired FROM sources s JOIN source_policies p USING(policy_id) ORDER BY s.source_id`,
+      `SELECT s.source_id,s.name,s.type,s.url,s.registry,s.operational_state,s.enabled,s.live_authorized,s.interval_seconds,s.last_success_at,s.last_error_code,s.next_collection_at,s.daily_budget,s.quota_used,s.min_request_interval_ms,s.policy_id,p.status,p.scope,p.registry_review,p.reviewed_by,p.reviewed_at,p.version,p.allowed_operations,p.retention,p.permission_reference,p.expires_at,(p.expires_at<=now()) AS policy_expired, CASE WHEN s.last_error_code IS NOT NULL THEN 'error' WHEN s.last_success_at IS NOT NULL THEN 'healthy' ELSE 'never-collected' END AS health, CASE WHEN s.enabled AND p.status='approved' AND p.expires_at>now() THEN 'Actively Collecting (mock only)' WHEN p.status='approved' AND p.expires_at>now() THEN 'Approved (mock only)' ELSE 'Configured' END AS configuration_status FROM sources s JOIN source_policies p USING(policy_id) WHERE ($1::text IS NULL OR s.name ILIKE '%'||$1||'%' OR s.source_id ILIKE '%'||$1||'%' OR s.registry->>'domain' ILIKE '%'||$1||'%') AND ($2::text IS NULL OR s.type=$2) AND ($3::text IS NULL OR s.registry->>'priority'=$3) AND ($4::text IS NULL OR p.status=$4) AND ($5::text IS NULL OR s.operational_state=$5) ORDER BY s.source_id`,
+      [
+        f.q ?? null,
+        f.type ?? null,
+        f.priority ?? null,
+        f.approval ?? null,
+        f.operational ?? null,
+      ],
     )
   ).rows;
 }
