@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "ping-g440-max-driver",
+    "brand": "Ping",
+    "name": "Ping G440 Max Driver",
+    "model_number": "G440-MAX",
+    "type": "driver",
+    "aliases": ["g440 max driver", "ping g440 max"]
+  },
+  {
+    "slug": "ping-g440-sft-driver",
+    "brand": "Ping",
+    "name": "Ping G440 SFT Driver",
+    "model_number": "G440-SFT",
+    "type": "driver",
+    "aliases": ["g440 sft driver", "ping g440 sft"]
+  },
+  {
+    "slug": "ping-g440-lst-driver",
+    "brand": "Ping",
+    "name": "Ping G440 LST Driver",
+    "model_number": "G440-LST",
+    "type": "driver",
+    "aliases": ["g440 lst driver", "ping g440 lst"]
+  },
+  {
+    "slug": "ping-g430-max-driver",
+    "brand": "Ping",
+    "name": "Ping G430 Max Driver",
+    "model_number": "G430-MAX",
+    "type": "driver",
+    "aliases": ["g430 max driver"]
+  },
+  {
+    "slug": "titleist-gt2-driver",
+    "brand": "Titleist",
+    "name": "Titleist GT2 Driver",
+    "model_number": "GT2",
+    "type": "driver",
+    "aliases": ["gt2 driver"]
+  },
+  {
+    "slug": "taylormade-qi35-driver",
+    "brand": "TaylorMade",
+    "name": "TaylorMade Qi35 Driver",
+    "model_number": "QI35",
+    "type": "driver",
+    "aliases": ["qi35 driver"]
+  }
+]

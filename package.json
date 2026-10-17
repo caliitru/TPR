@@ -1,0 +1,49 @@
+{
+  "name": "tpr-content-intelligence",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "db:up": "docker compose up -d --wait postgres",
+    "db:down": "docker compose down",
+    "db:migrate": "tsx scripts/migrate.ts up",
+    "db:rollback": "tsx scripts/migrate.ts down",
+    "seed": "tsx apps/worker/cli.ts seed",
+    "ingest": "tsx apps/worker/cli.ts ingest",
+    "demo": "tsx scripts/demo.ts",
+    "cli": "tsx apps/worker/cli.ts",
+    "dev": "tsx apps/api/server.ts",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc && node scripts/copy-static.mjs",
+    "test": "vitest run tests/unit.test.ts",
+    "test:integration": "vitest run tests/integration.test.ts",
+    "test:all": "vitest run",
+    "db:test:create": "tsx scripts/create-test-db.ts",
+    "smoke": "tsx scripts/smoke.ts"
+  },
+  "dependencies": {
+    "csv-parse": "^6.1.0",
+    "drizzle-orm": "^0.44.7",
+    "fast-xml-parser": "^5.3.0",
+    "fastify": "^5.6.1",
+    "pg": "^8.16.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@types/node": "^24.10.0",
+    "@types/pg": "^8.15.6",
+    "eslint": "^9.39.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2",
+    "vitest": "^3.2.4"
+  }
+}

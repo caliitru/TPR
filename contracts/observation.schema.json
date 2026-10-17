@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theplayersroomgolf.com/contracts/observation-v1.schema.json",
+  "title": "TPR External Evidence Observation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "observation_id",
+    "source_id",
+    "source_item_id",
+    "source_url",
+    "collected_at",
+    "observation_kind",
+    "review_status",
+    "evidence_basis",
+    "product_match",
+    "sentiment",
+    "rights_policy_id"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "observation_id": { "type": "string", "format": "uuid" },
+    "source_id": { "type": "string", "minLength": 1 },
+    "source_item_id": { "type": "string", "minLength": 1 },
+    "source_url": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "published_at": { "type": ["string", "null"], "format": "date-time" },
+    "collected_at": { "type": "string", "format": "date-time" },
+    "observation_kind": {
+      "enum": [
+        "first_hand_player_experience",
+        "expert_review",
+        "editorial",
+        "manufacturer_fact",
+        "marketing",
+        "discussion",
+        "unknown"
+      ]
+    },
+    "review_status": {
+      "enum": ["staged", "rejected", "approved_for_analysis", "revoked"]
+    },
+    "evidence_basis": {
+      "enum": [
+        "explicit_statement",
+        "structured_source_field",
+        "inferred",
+        "unknown"
+      ]
+    },
+    "product_match": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_product_id",
+        "candidate_label",
+        "confidence",
+        "method"
+      ],
+      "properties": {
+        "catalog_product_id": { "type": ["string", "null"], "format": "uuid" },
+        "candidate_label": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "method": {
+          "enum": ["exact", "alias", "model_number", "contextual", "unmatched"]
+        }
+      }
+    },
+    "sentiment": {
+      "enum": ["positive", "negative", "mixed", "neutral", "unknown"]
+    },
+    "topic": { "type": ["string", "null"] },
+    "explicit_rating": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["value", "scale_min", "scale_max", "evidence_basis"],
+      "properties": {
+        "value": { "type": "number" },
+        "scale_min": { "type": "number" },
+        "scale_max": { "type": "number" },
+        "evidence_basis": { "const": "structured_source_field" }
+      }
+    },
+    "player_type": {
+      "type": ["string", "null"],
+      "enum": [
+        "Beginner",
+        "High Handicap",
+        "Mid Handicap",
+        "Low Handicap",
+        "Scratch+",
+        null
+      ]
+    },
+    "player_type_basis": { "enum": ["explicit", "unknown"] },
+    "first_hand_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "model_version": { "type": ["string", "null"] },
+    "prompt_version": { "type": ["string", "null"] },
+    "source_content_hash": { "type": ["string", "null"] },
+    "independence_group_key": { "type": ["string", "null"] },
+    "rights_policy_id": { "type": "string", "minLength": 1 },
+    "quality_flags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "reviewer_id": { "type": ["string", "null"] },
+    "reviewed_at": { "type": ["string", "null"], "format": "date-time" }
+  }
+}

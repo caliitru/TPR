@@ -1,0 +1,34 @@
+{
+  "source_id": "example-approved-feed",
+  "kind": "rss",
+  "base_url": "https://example.org/feed.xml",
+  "enabled": false,
+  "policy_review": {
+    "status": "not_reviewed",
+    "reviewed_at": null,
+    "reviewed_by": null,
+    "terms_url": null,
+    "robots_url": null,
+    "permission_reference": null
+  },
+  "authorized_uses": {
+    "discovery": false,
+    "metadata": false,
+    "derived_insights": false,
+    "store_full_text": false,
+    "display_excerpt": false
+  },
+  "limits": {
+    "min_interval_seconds": 3600,
+    "max_requests_per_minute": 2,
+    "max_concurrency": 1,
+    "daily_request_budget": 100
+  },
+  "retention": {
+    "raw_text_hours": 0,
+    "metadata_days": 90,
+    "deletion_supported": true
+  },
+  "attribution": { "required": true },
+  "notes": "Example only. Do not enable without rights and policy review."
+}
