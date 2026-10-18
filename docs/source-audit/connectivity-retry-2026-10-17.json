@@ -1,0 +1,117 @@
+{
+  "purpose": "Five-source HTTPS retry after reported environment network update",
+  "requests": [
+    {
+      "source": "PING",
+      "kind": "homepage",
+      "url": "https://ping.com/",
+      "attempted_at": "2026-10-18T01:28:20.700930+00:00",
+      "outcome": "redirect",
+      "origin_http_status": 301,
+      "proxy_connect_status": 200,
+      "curl_exit": 0,
+      "redirect_url": "https://ping.com/en-us"
+    },
+    {
+      "source": "PING",
+      "kind": "policy_document_candidate",
+      "url": "https://ping.com/en-us/legal",
+      "attempted_at": "2026-10-18T01:28:20.650147+00:00",
+      "outcome": "redirect",
+      "origin_http_status": 301,
+      "proxy_connect_status": 200,
+      "curl_exit": 0,
+      "redirect_url": "https://ping.com/en-us/legal/terms-of-use"
+    },
+    {
+      "source": "Garmin",
+      "kind": "homepage",
+      "url": "https://www.garmin.com/",
+      "attempted_at": "2026-10-18T01:28:20.249668+00:00",
+      "outcome": "redirect",
+      "origin_http_status": 302,
+      "proxy_connect_status": 200,
+      "curl_exit": 0,
+      "redirect_url": "https://WWW.garmin.com/en-US/"
+    },
+    {
+      "source": "Garmin",
+      "kind": "policy_document_candidate",
+      "url": "https://www.garmin.com/en-US/legal/terms-of-use/",
+      "attempted_at": "2026-10-18T01:28:20.183189+00:00",
+      "outcome": "success",
+      "origin_http_status": 200,
+      "proxy_connect_status": 200,
+      "curl_exit": 0,
+      "redirect_url": null
+    },
+    {
+      "source": "Golf Monthly",
+      "kind": "homepage",
+      "url": "https://www.golfmonthly.com/",
+      "attempted_at": "2026-10-18T01:28:20.705495+00:00",
+      "outcome": "success",
+      "origin_http_status": 200,
+      "proxy_connect_status": 200,
+      "curl_exit": 0,
+      "redirect_url": null
+    },
+    {
+      "source": "Golf Monthly",
+      "kind": "policy_document_candidate",
+      "url": "https://www.golfmonthly.com/terms-and-conditions",
+      "attempted_at": "2026-10-18T01:28:21.948302+00:00",
+      "outcome": "origin_http_error",
+      "origin_http_status": 404,
+      "proxy_connect_status": 200,
+      "curl_exit": 0,
+      "redirect_url": null
+    },
+    {
+      "source": "GolfWRX",
+      "kind": "homepage",
+      "url": "https://www.golfwrx.com/",
+      "attempted_at": "2026-10-18T01:28:20.988494+00:00",
+      "outcome": "redirect",
+      "origin_http_status": 301,
+      "proxy_connect_status": 200,
+      "curl_exit": 0,
+      "redirect_url": "https://golfwrx.com/"
+    },
+    {
+      "source": "GolfWRX",
+      "kind": "policy_document_candidate",
+      "url": "https://www.golfwrx.com/terms-of-service/",
+      "attempted_at": "2026-10-18T01:28:21.247891+00:00",
+      "outcome": "redirect",
+      "origin_http_status": 301,
+      "proxy_connect_status": 200,
+      "curl_exit": 0,
+      "redirect_url": "https://golfwrx.com/terms-of-service/"
+    },
+    {
+      "source": "YouTube",
+      "kind": "homepage",
+      "url": "https://www.youtube.com/",
+      "attempted_at": "2026-10-18T01:28:20.723248+00:00",
+      "outcome": "environment_proxy_blocked",
+      "origin_http_status": null,
+      "proxy_connect_status": 403,
+      "curl_exit": 56,
+      "redirect_url": null
+    },
+    {
+      "source": "YouTube",
+      "kind": "policy_document_candidate",
+      "url": "https://developers.google.com/youtube/terms/developer-policies",
+      "attempted_at": "2026-10-18T01:28:21.375850+00:00",
+      "outcome": "success",
+      "origin_http_status": 200,
+      "proxy_connect_status": 200,
+      "curl_exit": 0,
+      "redirect_url": null
+    }
+  ],
+  "real_content_records_collected": 0,
+  "fixture_records_processed": 0
+}
