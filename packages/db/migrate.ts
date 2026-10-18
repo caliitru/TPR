@@ -12,6 +12,7 @@ export async function migrate(db: Database, direction: 'up' | 'down' = 'up') {
     '0004_api_sources',
     '0005_registry',
     '0006_weekly',
+    '0007_source_assessment',
   ];
   await db.orm.transaction(async (tx) => {
     await tx.execute(sql`SELECT pg_advisory_xact_lock(717440)`);

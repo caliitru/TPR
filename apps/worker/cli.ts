@@ -1,3 +1,5 @@
+import { assessSources } from '../../packages/core/source-assessment.js';
+import { researchPolicy } from '../../packages/core/policy-research.js';
 import { runWeekly } from '../../packages/core/weekly.js';
 import { seedSourceCatalog } from '../../packages/db/source-catalog.js';
 import { readFile } from 'node:fs/promises';
@@ -49,6 +51,7 @@ const { values, positionals } = parseArgs({
     force: { type: 'boolean' },
     until: { type: 'string' },
     'authorize-backfill': { type: 'boolean' },
+    'authorize-policy-research': { type: 'boolean' },
   },
 });
 const db = database();
@@ -138,6 +141,27 @@ try {
       result = await retractions(db);
       break;
 
+    case 'source-assess':
+      if (!values['authorize-policy-research'])
+        throw new Error(
+          '--authorize-policy-research is required; this command performs real policy-navigation requests, not content collection',
+        );
+      result = await assessSources(db, {
+        actor,
+        fetchPolicy: researchPolicy,
+        youtubeCredentialPresent: Boolean(process.env.TPR_YOUTUBE_API_KEY),
+        redditCredentialsPresent: Boolean(
+          process.env.REDDIT_CLIENT_ID && process.env.REDDIT_CLIENT_SECRET,
+        ),
+      });
+      break;
+    case 'source-assessments':
+      result = (
+        await db.pool.query(
+          'SELECT * FROM source_assessment_runs ORDER BY created_at DESC LIMIT 10',
+        )
+      ).rows;
+      break;
     case 'weekly-mock':
     case 'backfill-mock':
       if (positionals[0] === 'backfill-mock' && !values['authorize-backfill'])

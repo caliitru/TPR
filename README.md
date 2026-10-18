@@ -149,3 +149,7 @@ See [Source Registry setup, catalog and approval workflow](docs/SOURCE-REGISTRY.
 The undeployed weekly worker defaults to Sunday 02:00 America/New_York, with seven-day discovery and recovery from the last successful boundary. `pnpm cli weekly-mock` runs manually; `pnpm cli weekly-reports` inspects durable reports. A separate `backfill-mock --source SOURCE_ID --authorize-backfill` command performs the one-time five-year mock history window. Database constraints deduplicate across all historical records, and partial-page retries retain checkpoints.
 
 Read [weekly collection operations, safety and tests](docs/WEEKLY-COLLECTION.md) before use. The automatic worker is disabled by default, and no source or scheduler has been deployed or activated by this implementation.
+
+## Source authorization assessment
+
+`pnpm cli source-assess --authorize-policy-research --reviewer local-admin` explicitly navigates official policy/source pages through the configured HTTPS proxy and records an immutable assessment. It grants no collection permissions. `pnpm cli source-assessments` lists prior runs. See the [43-source authorization matrix](docs/source-audit/AUTHORIZATION-MATRIX.md) and [actual results and blockers](docs/source-audit/RESULTS.md). The recorded assessment retrieved zero origin documents because the environment proxy denied all requests; no live data collection is claimed.
