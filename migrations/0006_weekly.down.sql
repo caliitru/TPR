@@ -1,0 +1,12 @@
+DROP TABLE weekly_reports;
+DROP TABLE collection_windows;
+ALTER TABLE sources DROP COLUMN weekly_covered_until, DROP COLUMN weekly_last_success_at;
+ALTER TABLE crawl_jobs DROP COLUMN metrics;
+DROP INDEX observation_experience_identity;
+ALTER TABLE observations DROP COLUMN experience_key, DROP COLUMN product_key, DROP COLUMN evidence_revision;
+DROP TABLE source_item_keys;
+DROP INDEX source_item_experience_identity;
+DROP INDEX source_item_content_identity;
+DROP INDEX source_item_normalized_identity;
+ALTER TABLE source_items DROP COLUMN experience_key, DROP COLUMN content_fingerprint, DROP COLUMN normalized_url;
+DROP FUNCTION normalized_content_url(text);

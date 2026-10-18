@@ -1,3 +1,4 @@
+import { runWeekly } from '../../packages/core/weekly.js';
 import { seedSourceCatalog } from '../../packages/db/source-catalog.js';
 import { readFile } from 'node:fs/promises';
 import {
@@ -46,6 +47,8 @@ const { values, positionals } = parseArgs({
     out: { type: 'string' },
     file: { type: 'string' },
     force: { type: 'boolean' },
+    until: { type: 'string' },
+    'authorize-backfill': { type: 'boolean' },
   },
 });
 const db = database();
@@ -135,6 +138,41 @@ try {
       result = await retractions(db);
       break;
 
+    case 'weekly-mock':
+    case 'backfill-mock':
+      if (positionals[0] === 'backfill-mock' && !values['authorize-backfill'])
+        throw new Error(
+          '--authorize-backfill is required for the separate five-year mock backfill',
+        );
+      result = await runWeekly(db, {
+        actor,
+        kind: positionals[0] === 'backfill-mock' ? 'backfill' : 'weekly',
+        ...(values.until
+          ? {
+              end: new Date(
+                z.iso.datetime({ offset: true }).parse(values.until),
+              ),
+            }
+          : {}),
+        ...(values.source ? { sourceIds: [values.source] } : {}),
+        transportForSource: async (id) =>
+          mockTransportFor(
+            (
+              await db.pool.query<{ type: RegistrySource['type'] }>(
+                'SELECT type FROM sources WHERE source_id=$1',
+                [id],
+              )
+            ).rows[0]!.type,
+          ),
+      });
+      break;
+    case 'weekly-reports':
+      result = (
+        await db.pool.query(
+          'SELECT * FROM weekly_reports ORDER BY created_at DESC LIMIT 25',
+        )
+      ).rows;
+      break;
     case 'registry-seed':
       result = await seedSourceCatalog(db, actor);
       break;

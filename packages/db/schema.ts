@@ -25,6 +25,8 @@ export const sourcePolicies = pgTable('source_policies', {
   scope: text('scope').notNull().default('mock'),
 });
 export const sources = pgTable('sources', {
+  weeklyCoveredUntil: time('weekly_covered_until'),
+  weeklyLastSuccessAt: time('weekly_last_success_at'),
   registry: jsonb('registry'),
   operationalState: text('operational_state').notNull().default('disabled'),
   sourceId: text('source_id').primaryKey(),
@@ -83,6 +85,7 @@ export const productAliases = pgTable('product_aliases', {
   origin: text('origin').notNull(),
 });
 export const crawlJobs = pgTable('crawl_jobs', {
+  metrics: jsonb('metrics').notNull().default({}),
   jobId: uuid('job_id').primaryKey(),
   sourceId: text('source_id')
     .notNull()
@@ -99,6 +102,8 @@ export const crawlJobs = pgTable('crawl_jobs', {
   externalCursor: text('external_cursor'),
 });
 export const sourceItems = pgTable('source_items', {
+  contentFingerprint: text('content_fingerprint'),
+  experienceKey: text('experience_key'),
   itemId: uuid('item_id').primaryKey(),
   sourceId: text('source_id')
     .notNull()
@@ -115,6 +120,9 @@ export const sourceItems = pgTable('source_items', {
     .references(() => sourcePolicies.policyId),
 });
 export const observations = pgTable('observations', {
+  experienceKey: text('experience_key'),
+  productKey: text('product_key'),
+  evidenceRevision: text('evidence_revision'),
   observationId: uuid('observation_id').primaryKey(),
   itemId: uuid('item_id')
     .notNull()
@@ -222,4 +230,40 @@ export const observationEvidence = pgTable('observation_evidence', {
   extractionConfidence: doublePrecision('extraction_confidence').notNull(),
   experienceBasis: text('experience_basis').notNull(),
   provenance: jsonb('provenance').notNull(),
+});
+
+export const sourceItemKeys = pgTable('source_item_keys', {
+  sourceId: text('source_id')
+    .notNull()
+    .references(() => sources.sourceId),
+  kind: text('kind').notNull(),
+  value: text('value').notNull(),
+  itemId: uuid('item_id')
+    .notNull()
+    .references(() => sourceItems.itemId),
+});
+export const collectionWindows = pgTable('collection_windows', {
+  windowId: uuid('window_id').primaryKey(),
+  sourceId: text('source_id')
+    .notNull()
+    .references(() => sources.sourceId),
+  kind: text('kind').notNull(),
+  windowStart: time('window_start').notNull(),
+  windowEnd: time('window_end').notNull(),
+  state: text('state').notNull().default('pending'),
+  attempts: integer('attempts').notNull().default(0),
+  jobId: uuid('job_id').references(() => crawlJobs.jobId),
+  nextRetryAt: time('next_retry_at').notNull().defaultNow(),
+  checkpoint: jsonb('checkpoint').notNull().default({}),
+  metrics: jsonb('metrics').notNull().default({}),
+  lastJobMetrics: jsonb('last_job_metrics').notNull().default({}),
+  errorCode: text('error_code'),
+  createdAt: time('created_at').notNull().defaultNow(),
+  completedAt: time('completed_at'),
+});
+export const weeklyReports = pgTable('weekly_reports', {
+  reportId: uuid('report_id').primaryKey(),
+  slot: time('slot').notNull(),
+  createdAt: time('created_at').notNull().defaultNow(),
+  report: jsonb('report').notNull(),
 });

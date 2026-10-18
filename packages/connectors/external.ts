@@ -178,7 +178,16 @@ export async function youtubeConnector(
       q: query.q,
       ...(query.channel ? { channelId: query.channel } : {}),
       ...(page ? { pageToken: page } : {}),
-      ...(state.watermark ? { publishedAfter: state.watermark } : {}),
+      ...(source.collection_window
+        ? {
+            publishedAfter: new Date(
+              Date.parse(source.collection_window.start) - 1,
+            ).toISOString(),
+            publishedBefore: source.collection_window.end,
+          }
+        : state.watermark
+          ? { publishedAfter: state.watermark }
+          : {}),
     }))
       url.searchParams.set(k, v);
     const key = source.settings.api_key_env
@@ -252,6 +261,12 @@ export async function jsonConnector(
   const records: ExternalRecord[] = [];
   for (let i = 0; i < source.settings.max_pages; i++) {
     allowedUrl(next, source.settings.allowed_hosts);
+    if (source.collection_window) {
+      const bounded = new URL(next);
+      bounded.searchParams.set('from', source.collection_window.start);
+      bounded.searchParams.set('until', source.collection_window.end);
+      next = bounded.href;
+    }
     const res = await request({ url: next });
     const parsed = jsonPage.parse(JSON.parse(res.body));
     for (const raw of parsed.items) {

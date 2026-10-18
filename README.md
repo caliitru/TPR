@@ -143,3 +143,9 @@ The original requirements are preserved in `docs/TPR-TECHNICAL-AUDIT-AND-INGESTI
 Populate the 43 disabled source candidates after migration with `pnpm cli registry-seed --reviewer local-registry-admin`. Repeating the command preserves all existing decisions and inserts zero records. `pnpm cli sources` and the existing dashboard Sources section expose the centralized registry, search/filter controls, policy evidence, health and collection history. All seeded permissions are pending; live collection remains disabled.
 
 See [Source Registry setup, catalog and approval workflow](docs/SOURCE-REGISTRY.md) and [implementation results](docs/SOURCE-REGISTRY-IMPLEMENTATION.md). Existing fixture and Phase 2 commands continue to work unchanged.
+
+## Weekly incremental collection
+
+The undeployed weekly worker defaults to Sunday 02:00 America/New_York, with seven-day discovery and recovery from the last successful boundary. `pnpm cli weekly-mock` runs manually; `pnpm cli weekly-reports` inspects durable reports. A separate `backfill-mock --source SOURCE_ID --authorize-backfill` command performs the one-time five-year mock history window. Database constraints deduplicate across all historical records, and partial-page retries retain checkpoints.
+
+Read [weekly collection operations, safety and tests](docs/WEEKLY-COLLECTION.md) before use. The automatic worker is disabled by default, and no source or scheduler has been deployed or activated by this implementation.

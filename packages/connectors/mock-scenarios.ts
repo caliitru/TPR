@@ -18,6 +18,7 @@ export const mockDefinitions = ['youtube', 'rss', 'manufacturer', 'forum'].map(
       min_request_interval_ms: 0,
       daily_budget: 1000,
       settings: {
+        window_support: type === 'rss' ? 'complete-feed' : 'bounded-api',
         allowed_hosts:
           type === 'youtube'
             ? ['www.googleapis.com', 'www.youtube.com']
