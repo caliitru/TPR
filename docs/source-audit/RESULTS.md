@@ -1,5 +1,7 @@
 # Live source assessment results
 
+Historical initial assessment. See the [commercial permissions retry](COMMERCIAL-RETRY-2026-10-17.md) for the continuation after network access changed. The original evidence below is preserved.
+
 Baseline: PR #4 `663778d`, verified with both GitHub CI checks successful. Branch `feat/live-source-assessment` extends the existing source registry; no ingestion architecture was replaced.
 
 ## Real external acquisition — blocked, not a successful collection

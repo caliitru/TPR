@@ -1,5 +1,7 @@
 # Source authorization matrix — verification blocked
 
+Historical initial assessment. See the [commercial permissions retry](COMMERCIAL-RETRY-2026-10-17.md) for the continuation after network access changed. The original evidence below is preserved.
+
 This is a complete **43-entry blocker inventory**, not a completed legal clearance. Assessed October 17, 2026 (America/New_York); exact UTC attempt timestamps are in [real-assessment.json](real-assessment.json). All 36 distinct policy/navigation requests received environment-proxy CONNECT 403 responses **before reaching the origin**. No current terms or commercial rights were verified. There are no source-site HTTP permission findings, no permitted data endpoints and no real acquired product/player records.
 
 The user-provided registry requirement for Reddit remains commercial approval required; this is not presented as a newly verified official legal finding. TPR uses an unavailable reserved `.example` placeholder. All other candidates require current terms verification and source-specific permissions. Public visibility, feeds and robots rules are not permission.

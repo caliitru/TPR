@@ -1,0 +1,1941 @@
+{
+  "assessment": "commercial-source-access-retry",
+  "date_local": "2026-10-17 America/New_York",
+  "evidence_times": "UTC in individual receipts",
+  "baseline_commit": "407c657eb21bd2c4258e7a7712068fc00a11acf4",
+  "scope": "Official policy/navigation research, not product/player collection; no approval or activation changes.",
+  "sources": [
+    {
+      "source_id": "catalog-community-golfwrx-forums",
+      "name": "GolfWRX Forums",
+      "category": "community",
+      "status": "permission_required",
+      "official_reference": "https://golfwrx.com/rules-and-terms/",
+      "finding": "Site terms limit content to personal, non-commercial on-site use; no outside-content rights granted. Obtain a commercial community/API or publisher license covering collection, analysis and derived insights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-community-mygolfspy-forums",
+      "name": "MyGolfSpy Forums",
+      "category": "community",
+      "status": "permission_unestablished",
+      "official_reference": "https://forum.mygolfspy.com/terms/",
+      "finding": "Official forum terms and advertised RSS links retrieved; neither establishes explicit commercial evidence processing, retention or derived-insight rights. RSS links are technical discovery only; feed was not collected.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-community-the-hackers-paradise-community",
+      "name": "The Hackers Paradise Community",
+      "category": "community",
+      "status": "permission_required",
+      "official_reference": "https://www.thehackersparadise.com/terms-of-use/",
+      "finding": "Public/commercial reuse and derivative works require express written consent. Community and editorial licenses must identify their distinct content scopes.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-ping",
+      "name": "PING",
+      "category": "manufacturer",
+      "status": "terms_unverified",
+      "official_reference": "https://ping.com/en-us/legal/terms-of-use",
+      "finding": "Official legal redirect resolved successfully, but extracted document contains only a short client-rendered shell. HTTP 200 does not verify legal scope or an authorized machine-readable product feed.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-taylormade",
+      "name": "TaylorMade",
+      "category": "manufacturer",
+      "status": "access_restricted",
+      "official_reference": "https://www.taylormadegolf.com/",
+      "finding": "Official site redirects to an access challenge; no challenge solved or bypass attempted. Commercial product-feed permission remains unverified.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-callaway",
+      "name": "Callaway",
+      "category": "manufacturer",
+      "status": "permission_required",
+      "official_reference": "https://www.callawaygolf.com/legal",
+      "finding": "Personal, non-commercial download only; public/commercial reuse requires prior written permission. Authorized-media terms do not license TPR commercial intelligence or unrestricted product imagery.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-titleist",
+      "name": "Titleist",
+      "category": "manufacturer",
+      "status": "permission_required",
+      "official_reference": "https://www.titleist.com/company/legal",
+      "finding": "Actual Terms of Use restrict downloads to personal, noncommercial use and require written permission for public/commercial reuse. /terms.html is Terms of Sale, not a content license.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-cobra-golf",
+      "name": "Cobra Golf",
+      "category": "manufacturer",
+      "status": "permission_required",
+      "official_reference": "https://www.cobragolf.com/pages/terms",
+      "finding": "Personal/noncommercial access only; no incorporation into an information system beyond personal use; data mining, robots and scraping prohibited without separately established authorization.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-mizuno-golf",
+      "name": "Mizuno Golf",
+      "category": "manufacturer",
+      "status": "terms_unverified",
+      "official_reference": "https://mizunogolf.com/us/",
+      "finding": "Official regional site accessible; candidate /us/terms-and-conditions/ returns origin 404. No verified commercial product-feed terms identified.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-srixon",
+      "name": "Srixon",
+      "category": "manufacturer",
+      "status": "policy_proxy_blocked",
+      "official_reference": "https://us.dunlopsports.com/srixon",
+      "finding": "Official navigation identifies this destination; environment proxy denies CONNECT before origin access. No inference about commercial rights. Verify applicable product/metadata or feed license after policy access works.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-cleveland-golf",
+      "name": "Cleveland Golf",
+      "category": "manufacturer",
+      "status": "policy_proxy_blocked",
+      "official_reference": "https://us.dunlopsports.com/cleveland-golf",
+      "finding": "Official navigation identifies this destination; environment proxy denies CONNECT before origin access. No inference about commercial rights. Verify applicable product/metadata or feed license after policy access works.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-scotty-cameron",
+      "name": "Scotty Cameron",
+      "category": "manufacturer",
+      "status": "permission_required",
+      "official_reference": "https://www.scottycameron.com/terms/",
+      "finding": "Terms prohibit data mining, robots, spiders, scraping and similar automated or manual methods. Obtain explicit authorized product-feed rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-odyssey-golf",
+      "name": "Odyssey Golf",
+      "category": "manufacturer",
+      "status": "policy_proxy_blocked",
+      "official_reference": "https://odyssey.callawaygolf.com/",
+      "finding": "Official navigation identifies this destination; environment proxy denies CONNECT before origin access. No inference about commercial rights. Verify applicable product/metadata or feed license after policy access works.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-garmin",
+      "name": "Garmin",
+      "category": "manufacturer",
+      "status": "terms_unverified",
+      "official_reference": "https://www.garmin.com/en-US/legal/terms-of-use/",
+      "finding": "Official terms URL returns 200, but extractable content is navigation/client shell, not usable license text. Product facts and API/feed availability need verified commercial scope.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-bushnell-golf",
+      "name": "Bushnell Golf",
+      "category": "manufacturer",
+      "status": "policy_proxy_blocked",
+      "official_reference": "https://www.revelyst.com/termsconditions.html",
+      "finding": "Official navigation identifies this destination; environment proxy denies CONNECT before origin access. No inference about commercial rights. Verify applicable product/metadata or feed license after policy access works.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-flightscope",
+      "name": "FlightScope",
+      "category": "manufacturer",
+      "status": "permission_unestablished",
+      "official_reference": "https://flightscope.com/pages/terms-of-use-for-flightscope-com-website",
+      "finding": "Official website terms retrieved. No explicit license for TPR commercial product-feed collection, retention, imagery or derived insights was established. General service access is not that grant.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-foresight-sports",
+      "name": "Foresight Sports",
+      "category": "manufacturer",
+      "status": "permission_required",
+      "official_reference": "https://www.foresightsports.com/pages/terms",
+      "finding": "Personal informational viewing/download exception; commercial exploitation and automated extraction prohibited. Product-feed/analysis rights need a separate agreement.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-rapsodo",
+      "name": "Rapsodo",
+      "category": "manufacturer",
+      "status": "permission_required",
+      "official_reference": "https://rapsodo.com/pages/terms-of-use",
+      "finding": "Personal, noncommercial System/content license; data mining and screen scraping prohibited. No TPR commercial product-fact pipeline license established.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-manufacturer-skytrak",
+      "name": "SkyTrak",
+      "category": "manufacturer",
+      "status": "permission_unestablished",
+      "official_reference": "https://www.skytrakgolf.com/pages/terms-of-use",
+      "finding": "Policy page includes product warranty/software and material-submission provisions. Noncommercial software terms and rights granted by contributors to SKYTRAK do not grant TPR commercial extraction rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-editorial-mygolfspy",
+      "name": "MyGolfSpy",
+      "category": "editorial",
+      "status": "terms_unverified",
+      "official_reference": "https://mygolfspy.com/",
+      "finding": "Official editorial homepage accessible; candidate /terms-and-conditions/ returns origin 404. DMCA notice is not a collection license; editorial scope distinct from forum scope.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-editorial-golfwrx",
+      "name": "GolfWRX",
+      "category": "editorial",
+      "status": "permission_required",
+      "official_reference": "https://golfwrx.com/rules-and-terms/",
+      "finding": "Site terms limit content to personal, non-commercial on-site use; no outside-content rights granted. Obtain a commercial community/API or publisher license covering collection, analysis and derived insights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-editorial-golf-monthly",
+      "name": "Golf Monthly",
+      "category": "editorial",
+      "status": "permission_required",
+      "official_reference": "https://futureplc.com/terms-and-conditions-us/",
+      "finding": "Official footer directs to Future terms. Commercial content use needs a license; automated or manual extraction requires advance written permission. Feed availability does not override these restrictions.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-editorial-today-s-golfer",
+      "name": "Today's Golfer",
+      "category": "editorial",
+      "status": "terms_unverified",
+      "official_reference": "https://www.todays-golfer.com/terms-and-conditions/",
+      "finding": "Official terms landing page retrieved but extracted content is navigation and terms links, not sufficient substantive commercial license. Publisher metadata/feed licensing remains unverified.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-editorial-golf-digest",
+      "name": "Golf Digest",
+      "category": "editorial",
+      "status": "permission_required",
+      "official_reference": "https://www.golfdigest.com:443/",
+      "finding": "Official homepage footer prohibits reproduction, distribution, transmission, caching or other use without prior written permission of Discovery Golf. Full commercial metadata/feed agreement still needed.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-editorial-golf-com",
+      "name": "Golf.com",
+      "category": "editorial",
+      "status": "policy_proxy_blocked",
+      "official_reference": "https://8amgolf.com/policies/terms-of-service",
+      "finding": "Official navigation identifies this destination; environment proxy denies CONNECT before origin access. No inference about commercial rights. Verify applicable product/metadata or feed license after policy access works.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-editorial-the-hackers-paradise",
+      "name": "The Hackers Paradise",
+      "category": "editorial",
+      "status": "permission_required",
+      "official_reference": "https://www.thehackersparadise.com/terms-of-use/",
+      "finding": "Public/commercial reuse and derivative works require express written consent. Community and editorial licenses must identify their distinct content scopes.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-retailer-pga-tour-superstore",
+      "name": "PGA TOUR Superstore",
+      "category": "retailer",
+      "status": "permission_required",
+      "official_reference": "https://www.pgatoursuperstore.com/terms-of-use.html",
+      "finding": "Commercial/public use of site materials prohibited. Limited text hyperlink permission is not a license for price/feed extraction, product-fact collection or customer-review processing.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-retailer-golf-galaxy",
+      "name": "Golf Galaxy",
+      "category": "retailer",
+      "status": "permission_required",
+      "official_reference": "https://www.golfgalaxy.com/s/policy/terms-of-use",
+      "finding": "Personal noncommercial privilege excludes commercial site use; page scraping, robots and equivalent manual retrieval restricted. User-content license to other users is personal/noncommercial.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-retailer-globalgolf",
+      "name": "GlobalGolf",
+      "category": "retailer",
+      "status": "permission_required",
+      "official_reference": "https://www.globalgolf.com/about/terms-of-use/",
+      "finding": "Website may be used only as a personal shopping resource; other reuse is prohibited. Need commercial retailer/affiliate feed agreement; no review-processing permission established.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-retailer-2nd-swing",
+      "name": "2nd Swing",
+      "category": "retailer",
+      "status": "access_unavailable",
+      "official_reference": "https://www.2ndswing.com/",
+      "finding": "Proxy CONNECT succeeds but origin request times out. Timeout is not a policy prohibition or license. Authorized commercial feed terms remain unverified.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-retailer-carl-s-golfland",
+      "name": "Carl's Golfland",
+      "category": "retailer",
+      "status": "permission_unestablished",
+      "official_reference": "https://www.carlsgolfland.com/terms-conditions",
+      "finding": "Copyright/property notice and disclaimers provide no explicit commercial collection/analysis/derived-insight license. Seek authorized retailer/affiliate feed terms; do not infer factual-data access rights from public availability.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-retailer-worldwide-golf",
+      "name": "Worldwide Golf",
+      "category": "retailer",
+      "status": "policy_proxy_blocked",
+      "official_reference": "https://www.worldwidegolfshops.com/",
+      "finding": "Official navigation identifies this destination; environment proxy denies CONNECT before origin access. No inference about commercial rights. Verify applicable product/metadata or feed license after policy access works.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-reddit-r-golf",
+      "name": "r/golf",
+      "category": "reddit",
+      "status": "permission_required",
+      "official_reference": "https://redditinc.com/policies/data-api-terms",
+      "finding": "Data API Terms section 3.1 requires a separate agreement for commercial purposes. No commercial agreement or credentials configured. All nine communities share this gate; no unofficial scraping. Product relevance does not grant rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-reddit-r-golfclassifieds",
+      "name": "r/golfclassifieds",
+      "category": "reddit",
+      "status": "permission_required",
+      "official_reference": "https://redditinc.com/policies/data-api-terms",
+      "finding": "Data API Terms section 3.1 requires a separate agreement for commercial purposes. No commercial agreement or credentials configured. All nine communities share this gate; no unofficial scraping. Product relevance does not grant rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-reddit-r-golfgear",
+      "name": "r/GolfGear",
+      "category": "reddit",
+      "status": "permission_required",
+      "official_reference": "https://redditinc.com/policies/data-api-terms",
+      "finding": "Data API Terms section 3.1 requires a separate agreement for commercial purposes. No commercial agreement or credentials configured. All nine communities share this gate; no unofficial scraping. Product relevance does not grant rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-reddit-r-golftips",
+      "name": "r/golftips",
+      "category": "reddit",
+      "status": "permission_required",
+      "official_reference": "https://redditinc.com/policies/data-api-terms",
+      "finding": "Data API Terms section 3.1 requires a separate agreement for commercial purposes. No commercial agreement or credentials configured. All nine communities share this gate; no unofficial scraping. Product relevance does not grant rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-reddit-r-golfwrx",
+      "name": "r/golfwrx",
+      "category": "reddit",
+      "status": "permission_required",
+      "official_reference": "https://redditinc.com/policies/data-api-terms",
+      "finding": "Data API Terms section 3.1 requires a separate agreement for commercial purposes. No commercial agreement or credentials configured. All nine communities share this gate; no unofficial scraping. Product relevance does not grant rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-reddit-r-golf-simulators",
+      "name": "r/golf_simulators",
+      "category": "reddit",
+      "status": "permission_required",
+      "official_reference": "https://redditinc.com/policies/data-api-terms",
+      "finding": "Data API Terms section 3.1 requires a separate agreement for commercial purposes. No commercial agreement or credentials configured. All nine communities share this gate; no unofficial scraping. Product relevance does not grant rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-reddit-r-garmin",
+      "name": "r/Garmin",
+      "category": "reddit",
+      "status": "permission_required",
+      "official_reference": "https://redditinc.com/policies/data-api-terms",
+      "finding": "Data API Terms section 3.1 requires a separate agreement for commercial purposes. No commercial agreement or credentials configured. All nine communities share this gate; no unofficial scraping. Product relevance does not grant rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-reddit-r-garminwatches",
+      "name": "r/GarminWatches",
+      "category": "reddit",
+      "status": "permission_required",
+      "official_reference": "https://redditinc.com/policies/data-api-terms",
+      "finding": "Data API Terms section 3.1 requires a separate agreement for commercial purposes. No commercial agreement or credentials configured. All nine communities share this gate; no unofficial scraping. Product relevance does not grant rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-reddit-r-applewatch",
+      "name": "r/AppleWatch",
+      "category": "reddit",
+      "status": "permission_required",
+      "official_reference": "https://redditinc.com/policies/data-api-terms",
+      "finding": "Data API Terms section 3.1 requires a separate agreement for commercial purposes. No commercial agreement or credentials configured. All nine communities share this gate; no unofficial scraping. Product relevance does not grant rights.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-youtube-youtube-data-api",
+      "name": "YouTube Data API",
+      "category": "youtube",
+      "status": "conditional_api_metadata",
+      "official_reference": "https://developers.google.com/youtube/terms/developer-policies",
+      "finding": "III.G permits commercial API Clients subject to the full agreement; III.E.4 limits nonauthorized data storage to 30 days with deletion/refresh. III.E prohibits scraping; III.E.4 forbids new/derived API data or metrics absent an applicable audited exception. III.L exceptions require explicit audited permission, not assumed here. Limit future pilot to allowed discovery metadata; no transcripts, videos, reviews, sentiment or product/player scoring. No TPR_YOUTUBE_API_KEY, YOUTUBE_API_KEY or GOOGLE_API_KEY is configured; API scope/attribution/retention controls must be approved before collection.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "conditional_official_api_only",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    },
+    {
+      "source_id": "catalog-tpr-tpr-member-submissions",
+      "name": "TPR Member Submissions",
+      "category": "tpr",
+      "status": "integration_contract_required",
+      "official_reference": null,
+      "finding": "Reserved .example placeholder only. Need a separately approved member-evidence integration contract and isolated development endpoint. No live member or Lovable access.",
+      "ready_for_manual_collection": false,
+      "registry_permission_changed": false,
+      "operationally_enabled": false,
+      "commercial_collection": "not_authorized",
+      "analysis_and_derived_insights": "not_authorized_for_intended_use",
+      "storage_and_display": "no_data_collected; no_display_authorized",
+      "product_facts_collected": 0,
+      "firsthand_observations_collected": 0
+    }
+  ],
+  "status_counts": {
+    "permission_required": 24,
+    "permission_unestablished": 4,
+    "terms_unverified": 5,
+    "access_restricted": 1,
+    "policy_proxy_blocked": 6,
+    "access_unavailable": 1,
+    "conditional_api_metadata": 1,
+    "integration_contract_required": 1
+  },
+  "actual_acquisition": {
+    "product_facts": 0,
+    "firsthand_player_observations": 0,
+    "product_or_feedback_source_records": 0,
+    "approved_data_endpoints_contacted": 0
+  },
+  "synthetic_acquisition_this_assessment": {
+    "product_facts": 0,
+    "firsthand_player_observations": 0
+  },
+  "policy_receipts": [
+    {
+      "url": "https://forums.golfwrx.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://forums.golfwrx.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "2e3bac8557b3c1a83232f51ab608cf89ee526c0054f09f0fceeb7bec0fee2f41",
+      "text_length": 20563,
+      "checked_at": "2026-10-18T01:28:50.505716+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://forum.mygolfspy.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://forum.mygolfspy.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "fb312b0400f6cd027723d4f694632b650fa14ee7cc02dcca7ca075a24b50a57a",
+      "text_length": 19877,
+      "checked_at": "2026-10-18T01:28:51.147799+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.thehackersparadise.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://thehackersparadise.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.thehackersparadise.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "0c14c4eae1e3fc11c6e0b3e26eddcfb1358baf71c8a5162b2361e02de31d3104",
+      "text_length": 4606,
+      "checked_at": "2026-10-18T01:28:51.147345+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://ping.com/en-us",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://ping.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://ping.com/en-us",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "9542f5ff1b20ecdd2e60523d5f35bbf4e23ce1ed725ca923c600fd037319bc8b",
+      "text_length": 142,
+      "checked_at": "2026-10-18T01:28:51.219909+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.taylormadegolf.com/on/demandware.store/Sites-TMaG-Site/en_US/DDUser-Challenge",
+      "outcome": "redirect_limit",
+      "chain": [
+        {
+          "url": "https://taylormadegolf.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.taylormadegolf.com/",
+          "origin_status": 302,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.taylormadegolf.com/on/demandware.store/Sites-TMaG-Site/en_US/DDUser-Challenge",
+          "origin_status": 302,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.taylormadegolf.com/on/demandware.store/Sites-TMaG-Site",
+          "origin_status": 302,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.callawaygolf.com/",
+      "outcome": "http_error",
+      "chain": [
+        {
+          "url": "https://callawaygolf.com/",
+          "origin_status": 308,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.callawaygolf.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 63
+        }
+      ],
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.titleist.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://titleist.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.titleist.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "1ee42e932ebe3e04a04b2f0d7eb57eb7ffd0b3cc1c21c9c8e711797aaaa6765c",
+      "text_length": 5499,
+      "checked_at": "2026-10-18T01:28:52.874797+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.cobragolf.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://cobragolf.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.cobragolf.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "0b8b97fa6d04b2f7f917bc7b832301facb11c805a9743b41675fe002281376fa",
+      "text_length": 6948,
+      "checked_at": "2026-10-18T01:28:52.937685+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://mizunogolf.com/us/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://mizunogolf.com/",
+          "origin_status": 302,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://mizunogolf.com/us/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "cd3ac849a6fbf48e0c60fdf427446313612505e67ceda3dd667fb398e05d3890",
+      "text_length": 4047,
+      "checked_at": "2026-10-18T01:28:56.105541+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://srixon.com/",
+      "outcome": "redirect_needs_allowlist",
+      "redirect": "https://us.dunlopsports.com/srixon",
+      "chain": [
+        {
+          "url": "https://srixon.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "catalog"
+    },
+    {
+      "url": "https://clevelandgolf.com/",
+      "outcome": "redirect_needs_allowlist",
+      "redirect": "https://us.dunlopsports.com/cleveland-golf",
+      "chain": [
+        {
+          "url": "https://clevelandgolf.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.scottycameron.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://scottycameron.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.scottycameron.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "5076960368fc28001a92ef0e1007aae22f3e7e492959d36332ff6c333a095578",
+      "text_length": 3368,
+      "checked_at": "2026-10-18T01:28:54.112409+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://odysseygolf.com/",
+      "outcome": "redirect_needs_allowlist",
+      "redirect": "https://odyssey.callawaygolf.com/",
+      "chain": [
+        {
+          "url": "https://odysseygolf.com/",
+          "origin_status": 308,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "catalog"
+    },
+    {
+      "url": "https://WWW.garmin.com/en-US/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://garmin.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.garmin.com/",
+          "origin_status": 302,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://WWW.garmin.com/en-US/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "af6bcd506c188e6bc64073339886caae836bdc07bd49f88199fea6262c5f4b3c",
+      "text_length": 4368,
+      "checked_at": "2026-10-18T01:28:54.441490+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.bushnellgolf.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://bushnellgolf.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.bushnellgolf.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "fcf1641905620bbcf22d874397014afc31ad09d96129dc6755f0c945c377cca1",
+      "text_length": 7567,
+      "checked_at": "2026-10-18T01:28:54.844153+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://flightscope.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://flightscope.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "687443334acf6dc8a15d04c16a02c051e7313aa38dcad012286fd9c5f34a8816",
+      "text_length": 19386,
+      "checked_at": "2026-10-18T01:28:54.799324+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.foresightsports.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://foresightsports.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.foresightsports.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "94285f6068d13822a7ab7a9952aa4f96c98fbc1067884d9623d5b04a814271d8",
+      "text_length": 5945,
+      "checked_at": "2026-10-18T01:28:55.270296+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://rapsodo.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://rapsodo.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "204d831c8a71ba40fff7b3f972c69cb0d793b0cf296bf849c515f0217b67f6fa",
+      "text_length": 5269,
+      "checked_at": "2026-10-18T01:28:55.347899+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.skytrakgolf.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://skytrakgolf.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.skytrakgolf.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "729667dcc0462a8e1b4a68b3a57f2eeeb980d92ff87272fcae39f6f2292644d6",
+      "text_length": 11118,
+      "checked_at": "2026-10-18T01:28:55.948741+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://mygolfspy.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://mygolfspy.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "0454a65e06041dcbd239a2c21618122f3b8caa38f6815fb3fe263ad1ef79e0f8",
+      "text_length": 14592,
+      "checked_at": "2026-10-18T01:28:55.738637+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://golfwrx.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://golfwrx.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "21bc5ffa8d39c701df586b0e47bc7ffd3b4c9c3a2c1f2c1af320727a3d3113db",
+      "text_length": 10908,
+      "checked_at": "2026-10-18T01:28:55.670373+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.golfmonthly.com/",
+      "outcome": "http_error",
+      "chain": [
+        {
+          "url": "https://golfmonthly.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.golfmonthly.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 63
+        }
+      ],
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.todays-golfer.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://todays-golfer.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.todays-golfer.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "9ad500549e831a16411c5fe789e43f34a7b1059ddf46bc048b8bc1d80d5ec24b",
+      "text_length": 9446,
+      "checked_at": "2026-10-18T01:28:57.990597+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.golfdigest.com:443/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://golfdigest.com/",
+          "origin_status": 302,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.golfdigest.com:443/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "661abf52972c02b39d38b7592191f5a23c9f32b3d794334d12232c85c6d3345e",
+      "text_length": 15462,
+      "checked_at": "2026-10-18T01:28:57.122104+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://golf.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://golf.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "5352de7be720585a12c1228fc0996df4d22744572f73f19934035e3fd1dafae0",
+      "text_length": 9169,
+      "checked_at": "2026-10-18T01:28:56.507896+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.pgatoursuperstore.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://pgatoursuperstore.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.pgatoursuperstore.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "8833fadba742ebd824a0cfce5c70eaa83b7bda8e51536c7e4412f7b223208b9a",
+      "text_length": 6084,
+      "checked_at": "2026-10-18T01:28:57.497523+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.golfgalaxy.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://golfgalaxy.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.golfgalaxy.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "b40e1913ff8d94126a2aad0e3e6bfc151ec7363c8b58f673fff282629336b22e",
+      "text_length": 7840,
+      "checked_at": "2026-10-18T01:28:57.678106+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.globalgolf.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://globalgolf.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.globalgolf.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "a6d68fdb8867868ce8f2144fa104706e6451058698edc86476816d6da494f63c",
+      "text_length": 14087,
+      "checked_at": "2026-10-18T01:28:58.590068+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.2ndswing.com/",
+      "outcome": "network_error",
+      "chain": [
+        {
+          "url": "https://2ndswing.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.2ndswing.com/",
+          "origin_status": null,
+          "proxy_status": 200,
+          "exit": 28
+        }
+      ],
+      "batch": "catalog"
+    },
+    {
+      "url": "https://www.carlsgolfland.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://carlsgolfland.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.carlsgolfland.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "d9cae21824e8c644b684bc2a30ce42d03d1e82ee82111f0fe7acfa04051984b1",
+      "text_length": 5393,
+      "checked_at": "2026-10-18T01:28:59.002693+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://worldwidegolf.com/",
+      "outcome": "redirect_needs_allowlist",
+      "redirect": "https://www.worldwidegolfshops.com/",
+      "chain": [
+        {
+          "url": "https://worldwidegolf.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "catalog"
+    },
+    {
+      "url": "https://redditinc.com/policies/data-api-terms",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "9dc40f929881d2179c6ac4262c34b6913a864a2952fab51721bf9a99e8c94f13",
+      "text_length": 55412,
+      "checked_at": "2026-10-18T01:28:59.057504+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://redditinc.com/policies/user-agreement",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "3e600b59eaf7fad1781519e73f291d4df2ff40eb475ac92e1e2da1a305f497e8",
+      "text_length": 86118,
+      "checked_at": "2026-10-18T01:28:59.534789+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://developers.google.com/youtube/terms/developer-policies",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://developers.google.com/youtube/terms/developer-policies",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "344d8a50310d5fee9d7693bce54a0de02d377fcba486ecf4749b502f416869f8",
+      "text_length": 59182,
+      "checked_at": "2026-10-18T01:28:59.559203+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://developers.google.com/youtube/terms/api-services-terms-of-service",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://developers.google.com/youtube/terms/api-services-terms-of-service",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "65cbcd2b5248e63a4cb6633a09764e069b5400b3b5fbac5031c5bdfd1327d9ae",
+      "text_length": 41652,
+      "checked_at": "2026-10-18T01:29:00.003779+00:00",
+      "batch": "catalog"
+    },
+    {
+      "url": "https://ping.com/en-us/legal/terms-of-use",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://ping.com/en-us/legal/terms-of-use",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "837bd88bf8e00a3ac547b3cfee775be5cc56a786422c31ab3ff9b977c46ebe91",
+      "text_length": 118,
+      "checked_at": "2026-10-18T01:29:03.890407+00:00",
+      "batch": "representative-policies"
+    },
+    {
+      "url": "https://www.garmin.com/en-US/legal/terms-of-use/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.garmin.com/en-US/legal/terms-of-use/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "65f340c7fb868f79ad38b2c6827bee2ce533e331b3ac8d201094e52ada054360",
+      "text_length": 4369,
+      "checked_at": "2026-10-18T01:29:03.502090+00:00",
+      "batch": "representative-policies"
+    },
+    {
+      "url": "https://www.golfmonthly.com/",
+      "outcome": "http_error",
+      "chain": [
+        {
+          "url": "https://www.golfmonthly.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 63
+        }
+      ],
+      "batch": "representative-policies"
+    },
+    {
+      "url": "https://golfwrx.com/terms-of-service/",
+      "outcome": "http_error",
+      "chain": [
+        {
+          "url": "https://golfwrx.com/terms-of-service/",
+          "origin_status": 404,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "representative-policies"
+    },
+    {
+      "url": "https://golfwrx.com/rules-and-terms/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.golfwrx.com/rules-and-terms/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://golfwrx.com/rules-and-terms/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "72d1d267811d6d7ebf83e09e7d8c17f34f8be7fa5cc0b01ab10a0296ac2b05ad",
+      "text_length": 48305,
+      "checked_at": "2026-10-18T01:29:37.338311+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.thehackersparadise.com/terms-of-use/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.thehackersparadise.com/terms-of-use/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "03de9bf3a7c16611e8b1e84a11277784251f69a51aca61e5dde372c39779c971",
+      "text_length": 3236,
+      "checked_at": "2026-10-18T01:29:37.043359+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.titleist.com/terms.html",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.titleist.com/terms.html",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "0584542bad4c73b10c3506687958517538c63854e1ef934f471f14bcb8f8497a",
+      "text_length": 16421,
+      "checked_at": "2026-10-18T01:29:37.131896+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.cobragolf.com/pages/terms",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.cobragolf.com/pages/terms",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "3f499780ec418707f632eb39d6aac6f07724a786c1d9d2b8db5e2dadd380aefe",
+      "text_length": 53824,
+      "checked_at": "2026-10-18T01:29:36.953762+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.scottycameron.com/terms/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.scottycameron.com/terms/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "a53e98db7b08f8d9b39021b47e5238c28fad4f59c41f7896e897b55311bc79cb",
+      "text_length": 32408,
+      "checked_at": "2026-10-18T01:29:37.875522+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://flightscope.com/pages/terms-of-use-for-flightscope-com-website",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://flightscope.com/pages/terms-of-use-for-flightscope-com-website",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "869f55fd724ab70edeb75fe30313996c34572a72a403c54f5dca58533f85b95b",
+      "text_length": 13826,
+      "checked_at": "2026-10-18T01:29:37.515717+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.foresightsports.com/pages/terms",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.foresightsports.com/pages/terms",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "4af1adfe0cdd2e1bfff256be77a827d49a5477b0348a995c0bf1e62eb3796165",
+      "text_length": 80746,
+      "checked_at": "2026-10-18T01:29:37.774129+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://rapsodo.com/pages/terms-of-use",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://rapsodo.com/pages/terms-of-use",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "bdd1fae39ccf5943ad6f081389bcc488313e3c5b35ef00896bb551c1a199ca24",
+      "text_length": 49530,
+      "checked_at": "2026-10-18T01:29:37.849475+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.skytrakgolf.com/pages/terms-of-use",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.skytrakgolf.com/pages/terms-of-use",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "ee1867e913916f0125695dbf069a0aac549a45e5d36b99a9ae9acec436cefeca",
+      "text_length": 22649,
+      "checked_at": "2026-10-18T01:29:38.272322+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.todays-golfer.com/terms-and-conditions/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.todays-golfer.com/terms-and-conditions/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "6fd3ed1f04d278afa8c80f923848cdc83ad2eba6f645945a7778070eda22ca2d",
+      "text_length": 2853,
+      "checked_at": "2026-10-18T01:29:38.961363+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.pgatoursuperstore.com/terms-of-use.html",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.pgatoursuperstore.com/terms-of-use.html",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "223fed114e3160c2f255924bf232bfe801238b6e183f02abbc51b0c084cda5a6",
+      "text_length": 33438,
+      "checked_at": "2026-10-18T01:29:38.503109+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.golfgalaxy.com/s/policy/terms-of-use",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.golfgalaxy.com/s/terms-of-use",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        },
+        {
+          "url": "https://www.golfgalaxy.com/s/policy/terms-of-use",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "90dda0dbb86bdc0fed025119ce6b2ed4de5d156c081240dcbc18ee5a795ddf8a",
+      "text_length": 55407,
+      "checked_at": "2026-10-18T01:29:39.225813+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.globalgolf.com/about/terms-of-use/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.globalgolf.com/about/terms-of-use/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "a011a8c8cf285bae0dc0445d290405c71c70b2d1b6158db90f6e34d41eb3e289",
+      "text_length": 32857,
+      "checked_at": "2026-10-18T01:29:38.964925+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.carlsgolfland.com/terms-and-conditions",
+      "outcome": "http_error",
+      "chain": [
+        {
+          "url": "https://www.carlsgolfland.com/terms-and-conditions",
+          "origin_status": 404,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.worldwidegolf.com/",
+      "outcome": "redirect_needs_allowlist",
+      "redirect": "https://www.worldwidegolfshops.com/",
+      "chain": [
+        {
+          "url": "https://www.worldwidegolf.com/",
+          "origin_status": 301,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "policies"
+    },
+    {
+      "url": "https://www.golfmonthly.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.golfmonthly.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "26c35b7c40a68e9f833a1820bab2c019d0851f831005c03005a1f008ce950362",
+      "text_length": 17496,
+      "checked_at": "2026-10-18T01:29:39.425648+00:00",
+      "batch": "policies"
+    },
+    {
+      "url": "https://futureplc.com/terms-conditions/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://futureplc.com/terms-conditions/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "d263281b4941153a10ee5eb06c634f889dc2324a4ba7e52a3ed72d90483a1a1b",
+      "text_length": 2658,
+      "checked_at": "2026-10-18T01:31:06.309441+00:00",
+      "batch": "followups"
+    },
+    {
+      "url": "https://www.carlsgolfland.com/terms-conditions",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.carlsgolfland.com/terms-conditions",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "ee9715ec76d8a2a81c821e8148ee7d753b18b818de6bc438b23705bbac10dad4",
+      "text_length": 5281,
+      "checked_at": "2026-10-18T01:31:06.733016+00:00",
+      "batch": "followups"
+    },
+    {
+      "url": "https://us.dunlopsports.com/srixon",
+      "outcome": "proxy_denied",
+      "chain": [
+        {
+          "url": "https://us.dunlopsports.com/srixon",
+          "origin_status": null,
+          "proxy_status": 403,
+          "exit": 56
+        }
+      ],
+      "batch": "followups"
+    },
+    {
+      "url": "https://us.dunlopsports.com/cleveland-golf",
+      "outcome": "proxy_denied",
+      "chain": [
+        {
+          "url": "https://us.dunlopsports.com/cleveland-golf",
+          "origin_status": null,
+          "proxy_status": 403,
+          "exit": 56
+        }
+      ],
+      "batch": "followups"
+    },
+    {
+      "url": "https://odyssey.callawaygolf.com/",
+      "outcome": "proxy_denied",
+      "chain": [
+        {
+          "url": "https://odyssey.callawaygolf.com/",
+          "origin_status": null,
+          "proxy_status": 403,
+          "exit": 56
+        }
+      ],
+      "batch": "followups"
+    },
+    {
+      "url": "https://www.revelyst.com/termsconditions.html",
+      "outcome": "proxy_denied",
+      "chain": [
+        {
+          "url": "https://www.revelyst.com/termsconditions.html",
+          "origin_status": null,
+          "proxy_status": 403,
+          "exit": 56
+        }
+      ],
+      "batch": "followups"
+    },
+    {
+      "url": "https://8amgolf.com/policies/terms-of-service",
+      "outcome": "proxy_denied",
+      "chain": [
+        {
+          "url": "https://8amgolf.com/policies/terms-of-service",
+          "origin_status": null,
+          "proxy_status": 403,
+          "exit": 56
+        }
+      ],
+      "batch": "followups"
+    },
+    {
+      "url": "https://www.worldwidegolfshops.com/",
+      "outcome": "proxy_denied",
+      "chain": [
+        {
+          "url": "https://www.worldwidegolfshops.com/",
+          "origin_status": null,
+          "proxy_status": 403,
+          "exit": 56
+        }
+      ],
+      "batch": "followups"
+    },
+    {
+      "url": "https://www.callawaygolf.com/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.callawaygolf.com/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "b7c7c604a5df47aa87b270aae340045d447f9a3b7a6952d306e565505932acd9",
+      "text_length": 5720,
+      "checked_at": "2026-10-18T01:31:07.254907+00:00",
+      "batch": "followups"
+    },
+    {
+      "url": "https://futureplc.com/terms-and-conditions-us/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://futureplc.com/terms-and-conditions-us/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "b390cf5a085b3a692a158968b93c817c4048fdb86c885a23a42a3121462523cb",
+      "text_length": 60180,
+      "checked_at": "2026-10-18T01:45:00.819668+00:00",
+      "batch": "remaining"
+    },
+    {
+      "url": "https://www.callawaygolf.com/legal",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.callawaygolf.com/legal",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "9a7b6d4c1342fe041e260d2da35acf9a1fb781d188a42b1c442425856247dab5",
+      "text_length": 44664,
+      "checked_at": "2026-10-18T01:45:00.999752+00:00",
+      "batch": "remaining"
+    },
+    {
+      "url": "https://www.titleist.com/company/legal",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://www.titleist.com/company/legal",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "392c9f95343a608702572d9ce7d74852fdd52591cb9f97295b3ade70f3f2bf89",
+      "text_length": 36532,
+      "checked_at": "2026-10-18T01:45:01.334228+00:00",
+      "batch": "remaining"
+    },
+    {
+      "url": "https://forum.mygolfspy.com/terms/",
+      "outcome": "retrieved",
+      "chain": [
+        {
+          "url": "https://forum.mygolfspy.com/terms/",
+          "origin_status": 200,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "sha256": "50ebf7edd347eacede1e512c255a2525b7350290e64303f70b554b7a24d4e488",
+      "text_length": 4854,
+      "checked_at": "2026-10-18T01:45:00.976249+00:00",
+      "batch": "remaining"
+    },
+    {
+      "url": "https://mygolfspy.com/terms-and-conditions/",
+      "outcome": "http_error",
+      "chain": [
+        {
+          "url": "https://mygolfspy.com/terms-and-conditions/",
+          "origin_status": 404,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "remaining"
+    },
+    {
+      "url": "https://mizunogolf.com/us/terms-and-conditions/",
+      "outcome": "http_error",
+      "chain": [
+        {
+          "url": "https://mizunogolf.com/us/terms-and-conditions/",
+          "origin_status": 404,
+          "proxy_status": 200,
+          "exit": 0
+        }
+      ],
+      "batch": "remaining"
+    }
+  ],
+  "evidence_limitations": [
+    "Policy receipt hashes cover the decoded HTML representation; no raw bodies are committed.",
+    "Failed-request receipt timestamps were not retained by the temporary batch helper; successful receipt checked_at fields and the connectivity diagnostic include UTC times.",
+    "Initial homepage checks used a 1 MB cap; later policy requests used a bounded 4 MB cap. Size-limit failures are not commercial policy decisions.",
+    "Receipts are repeated navigation/policy attempts, not 70 distinct source-data records.",
+    "Environment draft now preserves existing hosts and adds five official redirect/policy hosts; saved draft requires publication and has not been validated in a new runtime."
+  ]
+}
