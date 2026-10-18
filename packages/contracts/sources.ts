@@ -75,6 +75,7 @@ export const sourceDefinition = z.strictObject({
   daily_budget: z.number().int().min(1).max(10000).default(100),
   min_request_interval_ms: z.number().int().min(0).max(3600000).default(1000),
   settings: z.strictObject({
+    window_support: z.enum(['bounded-api', 'complete-feed']).optional(),
     allowed_hosts: z
       .array(z.string().regex(/^[a-z0-9.-]+$/))
       .min(1)
@@ -112,6 +113,8 @@ export const policyApproval = z.strictObject({
 });
 export type PolicyApproval = z.infer<typeof policyApproval>;
 export const externalRecord = z.strictObject({
+  experience_id: z.string().min(1).max(128).optional(),
+  product_labels: z.array(z.string().min(1).max(200)).min(1).max(20).optional(),
   external_id: z.string().min(1).max(128),
   url: z.url().startsWith('https://'),
   published_at: z.iso.datetime({ offset: true }).nullable(),
@@ -141,7 +144,9 @@ export const externalRecord = z.strictObject({
 });
 export type ExternalRecord = z.infer<typeof externalRecord>;
 export interface RegistrySource extends SourceDefinition {
+  collection_window?: { start: string; end: string };
   registry_review?: z.infer<typeof registryReview> | null;
+  lease_until?: Date | null;
   operational_state?: string;
   enabled: boolean;
   policy_id: string;

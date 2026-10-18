@@ -17,17 +17,19 @@
     "demo": "tsx scripts/demo.ts",
     "cli": "tsx apps/worker/cli.ts",
     "dev": "tsx apps/api/server.ts",
+    "scheduler:mock": "tsx apps/worker/weekly-scheduler.ts",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "build": "tsc && node scripts/copy-static.mjs",
-    "test": "vitest run tests/unit.test.ts tests/phase2-unit.test.ts",
-    "test:integration": "vitest run tests/integration.test.ts tests/phase2-integration.test.ts tests/registry-integration.test.ts",
+    "test": "vitest run tests/unit.test.ts tests/phase2-unit.test.ts tests/weekly-unit.test.ts",
+    "test:integration": "vitest run tests/integration.test.ts tests/phase2-integration.test.ts tests/registry-integration.test.ts tests/weekly-integration.test.ts",
     "test:all": "vitest run",
     "db:test:create": "tsx scripts/create-test-db.ts",
     "smoke": "tsx scripts/smoke.ts",
     "demo:phase2": "tsx scripts/demo-phase2.ts",
-    "test:unit": "vitest run tests/unit.test.ts tests/phase2-unit.test.ts"
+    "demo:weekly": "tsx scripts/demo-weekly.ts",
+    "test:unit": "vitest run tests/unit.test.ts tests/phase2-unit.test.ts tests/weekly-unit.test.ts"
   },
   "dependencies": {
     "csv-parse": "^6.1.0",

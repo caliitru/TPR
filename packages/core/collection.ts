@@ -1,3 +1,4 @@
+import { contentIdentity, normalizedContentUrl } from './content-identity.js';
 import { randomUUID } from 'node:crypto';
 import { setTimeout as delay } from 'node:timers/promises';
 import { transaction, type Database } from '../db/client.js';
@@ -19,7 +20,10 @@ import {
   type HttpTransport,
   type HttpRequest,
 } from '../connectors/http.js';
-interface CollectionOptions {
+export interface CollectionOptions {
+  windowId?: string;
+  windowCheckpoint?: Record<string, unknown>;
+  window?: { start: string; end: string };
   transport: HttpTransport;
   provider?: ExtractionProvider;
   secret?: (name: string) => string | undefined;
@@ -95,6 +99,16 @@ export async function collectSource(
       await sourceEvent(c, sourceId, options.actor.id, code);
       job.state = 'dead_letter';
       return false;
+    }
+    if (options.windowId) {
+      await c.query(
+        `UPDATE sources SET discovery_state=$2,etag=NULL,last_modified=NULL WHERE source_id=$1`,
+        [sourceId, options.windowCheckpoint ?? {}],
+      );
+      await c.query(
+        'UPDATE collection_windows SET job_id=$2 WHERE window_id=$1',
+        [options.windowId, jobId],
+      );
     }
     sourcePolicy = source.policy_id;
     await c.query(
@@ -204,6 +218,17 @@ export async function collectSource(
   const persist = async (batch: DiscoveryBatch) => {
     let pageInserted = 0,
       pageFacts = 0;
+    const metrics = {
+      new_records: 0,
+      duplicates_skipped: 0,
+      records_updated: 0,
+      new_observations: 0,
+      valid_player_observations: 0,
+      ambiguous_matches: 0,
+      awaiting_moderation: 0,
+      outside_window: 0,
+      undated_records: 0,
+    };
     await transaction(db, async (c) => {
       const source = await readSource(c, sourceId, true);
       assertSource(source, options.transport.mode);
@@ -217,6 +242,20 @@ export async function collectSource(
         throw new CollectionError('policy_changed');
       const products = await catalog(c);
       for (const record of batch.records) {
+        if (options.window) {
+          if (!record.published_at) {
+            metrics.undated_records++;
+            continue;
+          }
+          const published = new Date(record.published_at).getTime();
+          if (
+            published < Date.parse(options.window.start) ||
+            published >= Date.parse(options.window.end)
+          ) {
+            metrics.outside_window++;
+            continue;
+          }
+        }
         if (source.registry && source.registry.category !== 'retailer') {
           const contentType =
             source.type === 'manufacturer'
@@ -231,11 +270,15 @@ export async function collectSource(
           if (!source.registry_review?.approved_content.includes(contentType))
             throw new CollectionError('unapproved_content_type');
         }
-        const url = allowedUrl(record.url, source.settings.allowed_hosts, true);
-        for (const k of [...url.searchParams.keys()])
-          if (/^(utm_|fbclid|gclid)/i.test(k)) url.searchParams.delete(k);
-        url.searchParams.sort();
-        record.url = url.href;
+        allowedUrl(record.url, source.settings.allowed_hosts, true);
+        record.url = normalizedContentUrl(record.url);
+        const canonicalLabels = (
+          record.product_labels ?? [record.product_label || record.title]
+        ).map(
+          (label) =>
+            resolveMention({ label }, products).catalog_product_id ?? label,
+        );
+        const identity = contentIdentity(record, sourceId, canonicalLabels);
         if (record.published_at)
           record.published_at = new Date(record.published_at).toISOString();
         let itemId = stableId(
@@ -248,21 +291,45 @@ export async function collectSource(
           )
         ).rowCount;
         if (tomb) continue;
+        const incomingExternalId = record.external_id;
         const previous = (
           await c.query<{
             item_id: string;
             external_id: string;
             content_hash: string;
             rights_policy_id: string;
+            content_fingerprint: string | null;
+            experience_key: string | null;
           }>(
-            'SELECT item_id,external_id,content_hash,rights_policy_id FROM source_items WHERE source_id=$1 AND (item_id=$2 OR canonical_url=$3) FOR UPDATE',
-            [sourceId, itemId, record.url],
+            `SELECT i.* FROM source_items i WHERE i.source_id=$1 AND (i.item_id=$2 OR i.normalized_url=normalized_content_url($3) OR i.content_fingerprint=$4 OR i.experience_key=$5 OR EXISTS(SELECT 1 FROM source_item_keys k WHERE k.source_id=$1 AND k.item_id=i.item_id AND ((k.kind='external' AND k.value=$6) OR (k.kind='url' AND k.value=normalized_content_url($3)) OR (k.kind='content' AND k.value=$4) OR (k.kind='experience' AND k.value=$5)))) ORDER BY i.first_collected_at LIMIT 1 FOR UPDATE`,
+            [
+              sourceId,
+              itemId,
+              record.url,
+              identity.content,
+              identity.experience,
+              record.external_id,
+            ],
           )
         ).rows[0];
         if (previous) {
           itemId = previous.item_id;
           record.external_id = previous.external_id;
         }
+        if (
+          (await c.query('SELECT 1 FROM tombstones WHERE item_id=$1', [itemId]))
+            .rowCount
+        ) {
+          metrics.duplicates_skipped++;
+          continue;
+        }
+        const aliasKeys = [
+          ['external', incomingExternalId],
+          ['url', record.url],
+          ['content', identity.content],
+          ['experience', identity.experience],
+        ];
+        // Source locks serialize item upserts; unique indexes remain the final database guard.
         const contentHash = hash(JSON.stringify(record));
         await c.query(
           `INSERT INTO source_items(item_id,source_id,external_id,canonical_url,published_at,content_hash,rights_policy_id) VALUES($1,$2,$3,$4,$5::timestamptz,$6,$7) ON CONFLICT(item_id) DO UPDATE SET last_seen_at=now()`,
@@ -276,11 +343,33 @@ export async function collectSource(
             source.policy_id,
           ],
         );
+        for (const [kind, value] of aliasKeys)
+          if (value)
+            await c.query(
+              'INSERT INTO source_item_keys(source_id,kind,value,item_id) VALUES($1,$2,$3,$4) ON CONFLICT DO NOTHING',
+              [sourceId, kind, value, itemId],
+            );
+        if (
+          previous?.content_fingerprint &&
+          previous.content_fingerprint === identity.content &&
+          previous.rights_policy_id === source.policy_id
+        ) {
+          metrics.duplicates_skipped++;
+          continue;
+        }
         if (
           previous?.content_hash === contentHash &&
           previous.rights_policy_id === source.policy_id
-        )
+        ) {
+          metrics.duplicates_skipped++;
           continue;
+        }
+        if (previous) metrics.records_updated++;
+        else metrics.new_records++;
+        await c.query(
+          'UPDATE source_items SET content_fingerprint=$2,experience_key=COALESCE($3,experience_key) WHERE item_id=$1',
+          [itemId, identity.content, identity.experience],
+        );
         // A revision suppresses prior reviewed evidence instead of silently changing it in place.
         if (previous) {
           await c.query(
@@ -372,47 +461,82 @@ export async function collectSource(
             record.kind !== 'editorial'
           )
             throw new CollectionError('policy_denied');
-          const extracted = await extractExternal(
-            record,
-            source,
-            products,
-            options.provider,
-          );
-          const obs = extracted.obs;
-          // Content revisions get new stable IDs; unchanged content is not restaged or counted twice.
-          const fingerprint = hash(`${extracted.fingerprint}:${contentHash}`);
-          obs.observation_id = stableId(`external-observation:${fingerprint}`);
-          const result = await c.query(
-            `INSERT INTO observations(observation_id,item_id,product_id,fingerprint,independence_group_key,payload,export_fields) VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT(fingerprint) DO NOTHING`,
-            [
-              obs.observation_id,
-              itemId,
-              obs.product_match.catalog_product_id,
-              fingerprint,
-              obs.independence_group_key,
-              obs,
-              {
-                would_recommend: record.structured.would_recommend ?? null,
-                worth_the_price: record.structured.worth_the_price ?? null,
-              },
-            ],
-          );
-          if (result.rowCount) {
-            pageInserted++;
-            const e = extracted.evidence;
-            await c.query(
-              'INSERT INTO observation_evidence(observation_id,attributes,extraction_confidence,experience_basis,provenance) VALUES($1,$2,$3,$4,$5)',
+          for (const label of record.product_labels ?? [
+            record.product_label || record.title,
+          ]) {
+            const extracted = await extractExternal(
+              { ...record, product_label: label },
+              source,
+              products,
+              options.provider,
+            );
+            const obs = extracted.obs;
+            // Content revisions get new stable IDs; unchanged content is not restaged or counted twice.
+            const productKey =
+              obs.product_match.catalog_product_id ??
+              label.normalize('NFKC').toLowerCase().trim();
+            const fingerprint = hash(
+              `${extracted.fingerprint}:${contentHash}:${productKey}`,
+            );
+            obs.independence_group_key =
+              identity.experience ?? identity.observation;
+            obs.observation_id = stableId(
+              `external-observation:${fingerprint}`,
+            );
+            const result = await c.query(
+              `INSERT INTO observations(observation_id,item_id,product_id,fingerprint,independence_group_key,payload,export_fields,experience_key,product_key,evidence_revision) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT DO NOTHING`,
               [
                 obs.observation_id,
-                JSON.stringify(e.attributes),
-                e.extraction_confidence,
-                e.experience_basis,
-                e.provenance,
+                itemId,
+                obs.product_match.catalog_product_id,
+                fingerprint,
+                obs.independence_group_key,
+                obs,
+                {
+                  would_recommend: record.structured.would_recommend ?? null,
+                  worth_the_price: record.structured.worth_the_price ?? null,
+                },
+                identity.observation,
+                productKey,
+                identity.revision,
               ],
             );
+            if (result.rowCount) {
+              pageInserted++;
+              metrics.new_observations++;
+              metrics.awaiting_moderation++;
+              if (obs.quality_flags.includes('ambiguous_product'))
+                metrics.ambiguous_matches++;
+              if (
+                obs.observation_kind === 'first_hand_player_experience' &&
+                !obs.quality_flags.length
+              )
+                metrics.valid_player_observations++;
+              const e = extracted.evidence;
+              await c.query(
+                'INSERT INTO observation_evidence(observation_id,attributes,extraction_confidence,experience_basis,provenance) VALUES($1,$2,$3,$4,$5)',
+                [
+                  obs.observation_id,
+                  JSON.stringify(e.attributes),
+                  e.extraction_confidence,
+                  e.experience_basis,
+                  e.provenance,
+                ],
+              );
+            } else metrics.duplicates_skipped++;
           }
         }
       }
+      if (options.windowId)
+        await c.query(
+          'UPDATE collection_windows SET checkpoint=$2 WHERE window_id=$1',
+          [options.windowId, batch.state],
+        );
+      for (const [key, value] of Object.entries(metrics))
+        await c.query(
+          `UPDATE crawl_jobs SET metrics=jsonb_set(metrics,ARRAY[$2],to_jsonb(COALESCE((metrics->>$2)::int,0)+$3::int)) WHERE job_id=$1`,
+          [jobId, key, value],
+        );
       await c.query(
         'UPDATE sources SET discovery_state=$2,etag=COALESCE($3,etag),last_modified=COALESCE($4,last_modified) WHERE source_id=$1',
         [sourceId, batch.state, batch.etag ?? null, batch.lastModified ?? null],
@@ -423,7 +547,20 @@ export async function collectSource(
   };
   try {
     const source = await transaction(db, (c) => readSource(c, sourceId));
-    await discoverExternal(source, request, options.secret, persist);
+    source.collection_window = options.window;
+    const discovered = await discoverExternal(
+      source,
+      request,
+      options.secret,
+      persist,
+    );
+    if (
+      options.window &&
+      (discovered.state.next ||
+        discovered.state.page ||
+        Number(discovered.state.search ?? 0) > 0)
+    )
+      throw new CollectionError('pagination_incomplete', 1);
     await transaction(db, async (c) => {
       const current = await readSource(c, sourceId, true);
       assertSource(current, options.transport.mode);
@@ -447,7 +584,11 @@ export async function collectSource(
   } catch (error) {
     const code =
       error instanceof CollectionError ? error.code : 'invalid_response';
-    const deferred = ['quota_exhausted', 'rate_limited'].includes(code);
+    const deferred = [
+      'quota_exhausted',
+      'rate_limited',
+      'pagination_incomplete',
+    ].includes(code);
     const terminal =
       [
         '403',
