@@ -1,0 +1,2085 @@
+{
+  "assessment_id": "3ba3a550-a95b-40ea-92bd-185ee9e634cd",
+  "created_at": "2026-10-18T01:03:20.294Z",
+  "source_count": 43,
+  "policy_navigation": {
+    "unique_requests_attempted": 36,
+    "origin_documents_retrieved": 0,
+    "proxy_denied": 36
+  },
+  "sources": [
+    {
+      "source_id": "catalog-community-golfwrx-forums",
+      "name": "GolfWRX Forums",
+      "source_url": "https://forums.golfwrx.com/",
+      "category": "community",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.274Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://forums.golfwrx.com/",
+          "attempted_at": "2026-10-18T01:03:19.405Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Explicit forum-owner API/feed/license or individually written access permission.",
+        "Rights to process and retain firsthand evidence, attribution/deletion obligations and participant privacy."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-community-mygolfspy-forums",
+      "name": "MyGolfSpy Forums",
+      "source_url": "https://forum.mygolfspy.com/",
+      "category": "community",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.284Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://forum.mygolfspy.com/",
+          "attempted_at": "2026-10-18T01:03:19.418Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Explicit forum-owner API/feed/license or individually written access permission.",
+        "Rights to process and retain firsthand evidence, attribution/deletion obligations and participant privacy."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-community-the-hackers-paradise-community",
+      "name": "The Hackers Paradise Community",
+      "source_url": "https://thehackersparadise.com/",
+      "category": "community",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.284Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://thehackersparadise.com/",
+          "attempted_at": "2026-10-18T01:03:19.429Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Explicit forum-owner API/feed/license or individually written access permission.",
+        "Rights to process and retain firsthand evidence, attribution/deletion obligations and participant privacy."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-ping",
+      "name": "PING",
+      "source_url": "https://ping.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.284Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://ping.com/",
+          "attempted_at": "2026-10-18T01:03:19.439Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-taylormade",
+      "name": "TaylorMade",
+      "source_url": "https://taylormadegolf.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.284Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://taylormadegolf.com/",
+          "attempted_at": "2026-10-18T01:03:19.504Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-callaway",
+      "name": "Callaway",
+      "source_url": "https://callawaygolf.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.284Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://callawaygolf.com/",
+          "attempted_at": "2026-10-18T01:03:19.511Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-titleist",
+      "name": "Titleist",
+      "source_url": "https://titleist.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.284Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://titleist.com/",
+          "attempted_at": "2026-10-18T01:03:19.518Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-cobra-golf",
+      "name": "Cobra Golf",
+      "source_url": "https://cobragolf.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.284Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://cobragolf.com/",
+          "attempted_at": "2026-10-18T01:03:19.527Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-mizuno-golf",
+      "name": "Mizuno Golf",
+      "source_url": "https://mizunogolf.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.284Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://mizunogolf.com/",
+          "attempted_at": "2026-10-18T01:03:19.604Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-srixon",
+      "name": "Srixon",
+      "source_url": "https://srixon.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://srixon.com/",
+          "attempted_at": "2026-10-18T01:03:19.612Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-cleveland-golf",
+      "name": "Cleveland Golf",
+      "source_url": "https://clevelandgolf.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://clevelandgolf.com/",
+          "attempted_at": "2026-10-18T01:03:19.621Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-scotty-cameron",
+      "name": "Scotty Cameron",
+      "source_url": "https://scottycameron.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://scottycameron.com/",
+          "attempted_at": "2026-10-18T01:03:19.626Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-odyssey-golf",
+      "name": "Odyssey Golf",
+      "source_url": "https://odysseygolf.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://odysseygolf.com/",
+          "attempted_at": "2026-10-18T01:03:19.727Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-garmin",
+      "name": "Garmin",
+      "source_url": "https://garmin.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://garmin.com/",
+          "attempted_at": "2026-10-18T01:03:19.756Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-bushnell-golf",
+      "name": "Bushnell Golf",
+      "source_url": "https://bushnellgolf.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://bushnellgolf.com/",
+          "attempted_at": "2026-10-18T01:03:19.761Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-flightscope",
+      "name": "FlightScope",
+      "source_url": "https://flightscope.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://flightscope.com/",
+          "attempted_at": "2026-10-18T01:03:19.767Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-foresight-sports",
+      "name": "Foresight Sports",
+      "source_url": "https://foresightsports.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://foresightsports.com/",
+          "attempted_at": "2026-10-18T01:03:19.857Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-rapsodo",
+      "name": "Rapsodo",
+      "source_url": "https://rapsodo.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://rapsodo.com/",
+          "attempted_at": "2026-10-18T01:03:19.863Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-manufacturer-skytrak",
+      "name": "SkyTrak",
+      "source_url": "https://skytrakgolf.com/",
+      "category": "manufacturer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://skytrakgolf.com/",
+          "attempted_at": "2026-10-18T01:03:19.869Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Verify official domain, authorized machine-readable product endpoint and release dates.",
+        "Written license or explicit official terms covering commercial product-fact collection, retention, imagery references and display."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-editorial-mygolfspy",
+      "name": "MyGolfSpy",
+      "source_url": "https://mygolfspy.com/",
+      "category": "editorial",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://mygolfspy.com/",
+          "attempted_at": "2026-10-18T01:03:19.878Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Official RSS/API endpoint and an explicit publisher license or terms permitting commercial metadata/derived use.",
+        "Article/photo/test-result reuse and firsthand classification must be separately established; RSS alone grants no commercial rights."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-editorial-golfwrx",
+      "name": "GolfWRX",
+      "source_url": "https://golfwrx.com/",
+      "category": "editorial",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://golfwrx.com/",
+          "attempted_at": "2026-10-18T01:03:19.933Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Official RSS/API endpoint and an explicit publisher license or terms permitting commercial metadata/derived use.",
+        "Article/photo/test-result reuse and firsthand classification must be separately established; RSS alone grants no commercial rights."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-editorial-golf-monthly",
+      "name": "Golf Monthly",
+      "source_url": "https://golfmonthly.com/",
+      "category": "editorial",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.285Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://golfmonthly.com/",
+          "attempted_at": "2026-10-18T01:03:19.941Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Official RSS/API endpoint and an explicit publisher license or terms permitting commercial metadata/derived use.",
+        "Article/photo/test-result reuse and firsthand classification must be separately established; RSS alone grants no commercial rights."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-editorial-today-s-golfer",
+      "name": "Today's Golfer",
+      "source_url": "https://todays-golfer.com/",
+      "category": "editorial",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.286Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://todays-golfer.com/",
+          "attempted_at": "2026-10-18T01:03:19.951Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Official RSS/API endpoint and an explicit publisher license or terms permitting commercial metadata/derived use.",
+        "Article/photo/test-result reuse and firsthand classification must be separately established; RSS alone grants no commercial rights."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-editorial-golf-digest",
+      "name": "Golf Digest",
+      "source_url": "https://golfdigest.com/",
+      "category": "editorial",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.286Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://golfdigest.com/",
+          "attempted_at": "2026-10-18T01:03:19.961Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Official RSS/API endpoint and an explicit publisher license or terms permitting commercial metadata/derived use.",
+        "Article/photo/test-result reuse and firsthand classification must be separately established; RSS alone grants no commercial rights."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-editorial-golf-com",
+      "name": "Golf.com",
+      "source_url": "https://golf.com/",
+      "category": "editorial",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.286Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://golf.com/",
+          "attempted_at": "2026-10-18T01:03:20.013Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Official RSS/API endpoint and an explicit publisher license or terms permitting commercial metadata/derived use.",
+        "Article/photo/test-result reuse and firsthand classification must be separately established; RSS alone grants no commercial rights."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-editorial-the-hackers-paradise",
+      "name": "The Hackers Paradise",
+      "source_url": "https://thehackersparadise.com/",
+      "category": "editorial",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.286Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://thehackersparadise.com/",
+          "attempted_at": "2026-10-18T01:03:19.429Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Official RSS/API endpoint and an explicit publisher license or terms permitting commercial metadata/derived use.",
+        "Article/photo/test-result reuse and firsthand classification must be separately established; RSS alone grants no commercial rights."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-retailer-pga-tour-superstore",
+      "name": "PGA TOUR Superstore",
+      "source_url": "https://pgatoursuperstore.com/",
+      "category": "retailer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.286Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://pgatoursuperstore.com/",
+          "attempted_at": "2026-10-18T01:03:20.016Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Retailer/affiliate feed agreement covering commercial price/inventory/product identity use.",
+        "Customer-review processing requires a separate explicit license; commerce never influences scoring."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-retailer-golf-galaxy",
+      "name": "Golf Galaxy",
+      "source_url": "https://golfgalaxy.com/",
+      "category": "retailer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://golfgalaxy.com/",
+          "attempted_at": "2026-10-18T01:03:20.024Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Retailer/affiliate feed agreement covering commercial price/inventory/product identity use.",
+        "Customer-review processing requires a separate explicit license; commerce never influences scoring."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-retailer-globalgolf",
+      "name": "GlobalGolf",
+      "source_url": "https://globalgolf.com/",
+      "category": "retailer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://globalgolf.com/",
+          "attempted_at": "2026-10-18T01:03:20.030Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Retailer/affiliate feed agreement covering commercial price/inventory/product identity use.",
+        "Customer-review processing requires a separate explicit license; commerce never influences scoring."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-retailer-2nd-swing",
+      "name": "2nd Swing",
+      "source_url": "https://2ndswing.com/",
+      "category": "retailer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://2ndswing.com/",
+          "attempted_at": "2026-10-18T01:03:20.091Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Retailer/affiliate feed agreement covering commercial price/inventory/product identity use.",
+        "Customer-review processing requires a separate explicit license; commerce never influences scoring."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-retailer-carl-s-golfland",
+      "name": "Carl's Golfland",
+      "source_url": "https://carlsgolfland.com/",
+      "category": "retailer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://carlsgolfland.com/",
+          "attempted_at": "2026-10-18T01:03:20.098Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Retailer/affiliate feed agreement covering commercial price/inventory/product identity use.",
+        "Customer-review processing requires a separate explicit license; commerce never influences scoring."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-retailer-worldwide-golf",
+      "name": "Worldwide Golf",
+      "source_url": "https://worldwidegolf.com/",
+      "category": "retailer",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official machine-readable endpoint unverified; policy navigation only",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [
+        {
+          "url": "https://worldwidegolf.com/",
+          "attempted_at": "2026-10-18T01:03:20.108Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Retailer/affiliate feed agreement covering commercial price/inventory/product identity use.",
+        "Customer-review processing requires a separate explicit license; commerce never influences scoring."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-reddit-r-golf",
+      "name": "r/golf",
+      "source_url": "https://www.reddit.com/r/golf/",
+      "category": "reddit",
+      "classification": "commercial_agreement_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official commercial API only; approval and adapter pending",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "attempted_at": "2026-10-18T01:03:20.118Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "attempted_at": "2026-10-18T01:03:20.186Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://www.reddit.com/wiki/api/",
+          "attempted_at": "2026-10-18T01:03:20.192Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Commercial Reddit API agreement and approved intended use; no unofficial scraping.",
+        "Current Data API terms and subreddit-specific relevance/moderation scope.",
+        "Secure client credentials and a reviewed source-specific adapter."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-reddit-r-golfclassifieds",
+      "name": "r/golfclassifieds",
+      "source_url": "https://www.reddit.com/r/golfclassifieds/",
+      "category": "reddit",
+      "classification": "commercial_agreement_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official commercial API only; approval and adapter pending",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "attempted_at": "2026-10-18T01:03:20.118Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "attempted_at": "2026-10-18T01:03:20.186Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://www.reddit.com/wiki/api/",
+          "attempted_at": "2026-10-18T01:03:20.192Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Commercial Reddit API agreement and approved intended use; no unofficial scraping.",
+        "Current Data API terms and subreddit-specific relevance/moderation scope.",
+        "Secure client credentials and a reviewed source-specific adapter."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-reddit-r-golfgear",
+      "name": "r/GolfGear",
+      "source_url": "https://www.reddit.com/r/GolfGear/",
+      "category": "reddit",
+      "classification": "commercial_agreement_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official commercial API only; approval and adapter pending",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "attempted_at": "2026-10-18T01:03:20.118Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "attempted_at": "2026-10-18T01:03:20.186Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://www.reddit.com/wiki/api/",
+          "attempted_at": "2026-10-18T01:03:20.192Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Commercial Reddit API agreement and approved intended use; no unofficial scraping.",
+        "Current Data API terms and subreddit-specific relevance/moderation scope.",
+        "Secure client credentials and a reviewed source-specific adapter."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-reddit-r-golftips",
+      "name": "r/golftips",
+      "source_url": "https://www.reddit.com/r/golftips/",
+      "category": "reddit",
+      "classification": "commercial_agreement_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official commercial API only; approval and adapter pending",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "attempted_at": "2026-10-18T01:03:20.118Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "attempted_at": "2026-10-18T01:03:20.186Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://www.reddit.com/wiki/api/",
+          "attempted_at": "2026-10-18T01:03:20.192Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Commercial Reddit API agreement and approved intended use; no unofficial scraping.",
+        "Current Data API terms and subreddit-specific relevance/moderation scope.",
+        "Secure client credentials and a reviewed source-specific adapter."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-reddit-r-golfwrx",
+      "name": "r/golfwrx",
+      "source_url": "https://www.reddit.com/r/golfwrx/",
+      "category": "reddit",
+      "classification": "commercial_agreement_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official commercial API only; approval and adapter pending",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "attempted_at": "2026-10-18T01:03:20.118Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "attempted_at": "2026-10-18T01:03:20.186Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://www.reddit.com/wiki/api/",
+          "attempted_at": "2026-10-18T01:03:20.192Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Commercial Reddit API agreement and approved intended use; no unofficial scraping.",
+        "Current Data API terms and subreddit-specific relevance/moderation scope.",
+        "Secure client credentials and a reviewed source-specific adapter."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-reddit-r-golf-simulators",
+      "name": "r/golf_simulators",
+      "source_url": "https://www.reddit.com/r/golf_simulators/",
+      "category": "reddit",
+      "classification": "commercial_agreement_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official commercial API only; approval and adapter pending",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "attempted_at": "2026-10-18T01:03:20.118Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "attempted_at": "2026-10-18T01:03:20.186Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://www.reddit.com/wiki/api/",
+          "attempted_at": "2026-10-18T01:03:20.192Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Commercial Reddit API agreement and approved intended use; no unofficial scraping.",
+        "Current Data API terms and subreddit-specific relevance/moderation scope.",
+        "Secure client credentials and a reviewed source-specific adapter."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-reddit-r-garmin",
+      "name": "r/Garmin",
+      "source_url": "https://www.reddit.com/r/Garmin/",
+      "category": "reddit",
+      "classification": "commercial_agreement_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official commercial API only; approval and adapter pending",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "attempted_at": "2026-10-18T01:03:20.118Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "attempted_at": "2026-10-18T01:03:20.186Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://www.reddit.com/wiki/api/",
+          "attempted_at": "2026-10-18T01:03:20.192Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Commercial Reddit API agreement and approved intended use; no unofficial scraping.",
+        "Current Data API terms and subreddit-specific relevance/moderation scope.",
+        "Secure client credentials and a reviewed source-specific adapter."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-reddit-r-garminwatches",
+      "name": "r/GarminWatches",
+      "source_url": "https://www.reddit.com/r/GarminWatches/",
+      "category": "reddit",
+      "classification": "commercial_agreement_required",
+      "checked_at": "2026-10-18T01:03:20.287Z",
+      "terms_verified_at": null,
+      "access_method": "Official commercial API only; approval and adapter pending",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "attempted_at": "2026-10-18T01:03:20.118Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "attempted_at": "2026-10-18T01:03:20.186Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://www.reddit.com/wiki/api/",
+          "attempted_at": "2026-10-18T01:03:20.192Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Commercial Reddit API agreement and approved intended use; no unofficial scraping.",
+        "Current Data API terms and subreddit-specific relevance/moderation scope.",
+        "Secure client credentials and a reviewed source-specific adapter."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-reddit-r-applewatch",
+      "name": "r/AppleWatch",
+      "source_url": "https://www.reddit.com/r/AppleWatch/",
+      "category": "reddit",
+      "classification": "commercial_agreement_required",
+      "checked_at": "2026-10-18T01:03:20.288Z",
+      "terms_verified_at": null,
+      "access_method": "Official commercial API only; approval and adapter pending",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://redditinc.com/policies/data-api-terms",
+          "attempted_at": "2026-10-18T01:03:20.118Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://redditinc.com/policies/user-agreement",
+          "attempted_at": "2026-10-18T01:03:20.186Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://www.reddit.com/wiki/api/",
+          "attempted_at": "2026-10-18T01:03:20.192Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Commercial Reddit API agreement and approved intended use; no unofficial scraping.",
+        "Current Data API terms and subreddit-specific relevance/moderation scope.",
+        "Secure client credentials and a reviewed source-specific adapter."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-youtube-youtube-data-api",
+      "name": "YouTube Data API",
+      "source_url": "https://www.googleapis.com/youtube/v3/search",
+      "category": "youtube",
+      "classification": "additional_terms_verification_required",
+      "checked_at": "2026-10-18T01:03:20.288Z",
+      "terms_verified_at": null,
+      "access_method": "Official YouTube Data API v3 (implementation exists; credentials and policy review pending)",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": false,
+      "evidence": [
+        {
+          "url": "https://developers.google.com/youtube/terms/api-services-terms-of-service",
+          "attempted_at": "2026-10-18T01:03:20.197Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        },
+        {
+          "url": "https://developers.google.com/youtube/terms/developer-policies",
+          "attempted_at": "2026-10-18T01:03:20.208Z",
+          "outcome": "proxy_connect_denied",
+          "origin_status": null,
+          "proxy_connect_status": 403,
+          "content_sha256": null,
+          "discovered_policy_links": [],
+          "note": "Environment CONNECT proxy denied the request before source access; this is not a publisher permission finding."
+        }
+      ],
+      "missing_prerequisites": [
+        "Enable official-site policy research in the environment network settings; no current terms were retrieved.",
+        "Current YouTube API policies reviewed for discovery, commercial processing, attribution, retention and refresh/deletion.",
+        "API key bound securely as TPR_YOUTUBE_API_KEY; an absent key must not be fabricated.",
+        "Approved channels/queries, quota configuration and a bounded manual-only metadata grant."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    },
+    {
+      "source_id": "catalog-tpr-tpr-member-submissions",
+      "name": "TPR Member Submissions",
+      "source_url": "https://theplayersroom.example/",
+      "category": "tpr",
+      "classification": "unavailable_unsupported",
+      "checked_at": "2026-10-18T01:03:20.288Z",
+      "terms_verified_at": null,
+      "access_method": "Reserved .example placeholder; no integration contract",
+      "commercial_rights": "unverified",
+      "operations": {
+        "collection": "unknown",
+        "analysis": "unknown",
+        "derived_insights": "unknown",
+        "storage": "unknown",
+        "display": "unknown"
+      },
+      "retention": "unverified; no collection authorization",
+      "credentials_configured": null,
+      "evidence": [],
+      "missing_prerequisites": [
+        "Separately approved TPR member integration contract, real development endpoint and member evidence rights.",
+        "No Lovable or live member database connection is authorized or configured."
+      ],
+      "questions": [
+        "Which exact terms/version grant TPR commercial collection, analysis, derived storage and display?",
+        "What attribution, refresh, expiry, deletion and sublicensing limits apply to the intended operations?"
+      ],
+      "eligible_for_pilot": false
+    }
+  ],
+  "products": {
+    "requested_minimum": 10,
+    "available": 6,
+    "selected": [
+      {
+        "product_id": "61d1c5c2-5e77-5d66-a9a0-6e09e3e3dc4f",
+        "slug": "ping-g430-max-driver",
+        "brand": "Ping",
+        "name": "Ping G430 Max Driver",
+        "category": "Clubs",
+        "type": "driver",
+        "catalog_snapshot_version": "synthetic-v1"
+      },
+      {
+        "product_id": "b570a493-7ff6-5c3c-ab2d-749f5cbd0632",
+        "slug": "ping-g440-lst-driver",
+        "brand": "Ping",
+        "name": "Ping G440 LST Driver",
+        "category": "Clubs",
+        "type": "driver",
+        "catalog_snapshot_version": "synthetic-v1"
+      },
+      {
+        "product_id": "be9a980b-afb1-5724-a7b1-15e78a3b27e6",
+        "slug": "ping-g440-max-driver",
+        "brand": "Ping",
+        "name": "Ping G440 Max Driver",
+        "category": "Clubs",
+        "type": "driver",
+        "catalog_snapshot_version": "synthetic-v1"
+      },
+      {
+        "product_id": "4333e3b8-f872-54f1-a068-6ec4594d3521",
+        "slug": "ping-g440-sft-driver",
+        "brand": "Ping",
+        "name": "Ping G440 SFT Driver",
+        "category": "Clubs",
+        "type": "driver",
+        "catalog_snapshot_version": "synthetic-v1"
+      },
+      {
+        "product_id": "de4b1593-0b7d-599e-a696-63f8e8851869",
+        "slug": "taylormade-qi35-driver",
+        "brand": "TaylorMade",
+        "name": "TaylorMade Qi35 Driver",
+        "category": "Clubs",
+        "type": "driver",
+        "catalog_snapshot_version": "synthetic-v1"
+      },
+      {
+        "product_id": "ba264f29-074d-56b2-aa7c-84ae6054b843",
+        "slug": "titleist-gt2-driver",
+        "brand": "Titleist",
+        "name": "Titleist GT2 Driver",
+        "category": "Clubs",
+        "type": "driver",
+        "catalog_snapshot_version": "synthetic-v1"
+      }
+    ],
+    "identity_status": "Existing records only; synthetic-v1 identities and release dates require independent verification. No products invented."
+  },
+  "real_external_collection": {
+    "status": "blocked_no_verified_source_permissions",
+    "sources_contacted_for_data": [],
+    "endpoints_used_for_data": [],
+    "records_retrieved": 0,
+    "product_mentions": 0,
+    "valid_firsthand_observations": 0,
+    "manufacturer_facts": 0,
+    "duplicates_skipped": 0,
+    "awaiting_moderation": 0,
+    "observations": []
+  },
+  "mock_testing": {
+    "included_in_real_totals": false,
+    "synthetic_records_generated": 0
+  },
+  "scheduler_deployed": false,
+  "production_publication": false
+}

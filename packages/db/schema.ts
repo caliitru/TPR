@@ -267,3 +267,10 @@ export const weeklyReports = pgTable('weekly_reports', {
   createdAt: time('created_at').notNull().defaultNow(),
   report: jsonb('report').notNull(),
 });
+
+export const sourceAssessmentRuns = pgTable('source_assessment_runs', {
+  assessmentId: uuid('assessment_id').primaryKey(),
+  actorId: text('actor_id').notNull(),
+  createdAt: time('created_at').notNull().defaultNow(),
+  report: jsonb('report').notNull(),
+});
